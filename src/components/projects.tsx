@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Bot, Video, Cpu } from "lucide-react";
+import { ExternalLink, Video, Cpu } from "lucide-react";
 import { AnimateOnScroll } from "./animate-on-scroll";
 
 const projects = [
@@ -10,23 +10,11 @@ const projects = [
     description:
       "Plataforma SaaS para investidores imobiliários. Gestão inteligente de leads, imóveis e automações de follow-up.",
     stack: ["Next.js", "Supabase", "Vercel", "n8n"],
-    href: "#",
+    href: "https://viapro-three.vercel.app/",
     icon: Cpu,
     featured: true,
     gradient: "from-blue-500/10 to-cyan-500/10",
     borderGlow: "hover:border-blue-500/20",
-  },
-  {
-    title: "Maya AI",
-    tag: "Virtual Influencer",
-    description:
-      "Projeto de IA generativa aplicada a marketing digital. Criação de conteúdo autônomo com personalidade única.",
-    stack: ["Python", "AI/ML", "ComfyUI", "Automation"],
-    href: "#",
-    icon: Bot,
-    featured: false,
-    gradient: "from-purple-500/10 to-pink-500/10",
-    borderGlow: "hover:border-purple-500/20",
   },
   {
     title: "TechTalks Brasil",
@@ -34,7 +22,7 @@ const projects = [
     description:
       "Canal de conteúdo técnico sobre engenharia de software, IA e automação. Educação e posicionamento de autoridade.",
     stack: ["Content", "YouTube", "Community"],
-    href: "#",
+    href: "https://www.techtalksbrasil.com.br/",
     icon: Video,
     featured: false,
     gradient: "from-emerald-500/10 to-teal-500/10",
@@ -46,7 +34,7 @@ const projects = [
     description:
       "Framework proprietário de orquestração de agentes IA. Sistema multi-agente para desenvolvimento full-stack assistido.",
     stack: ["TypeScript", "Node.js", "AI Agents", "CLI"],
-    href: "#",
+    href: "https://github.com/SynkraAI/aiox-core",
     icon: Sparkles,
     featured: false,
     gradient: "from-amber-500/10 to-orange-500/10",
@@ -97,10 +85,13 @@ export function Projects() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {projects.map((project, i) => {
             const Icon = project.icon;
+            const isExternal = project.href.startsWith("http");
             return (
               <AnimateOnScroll key={project.title} delay={i * 0.1} className={project.featured ? "md:col-span-2" : ""}>
               <a
                 href={project.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener noreferrer" : undefined}
                 className={`group relative rounded-2xl bg-gradient-to-br ${project.gradient} border border-white/[0.06] ${project.borderGlow} p-6 sm:p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 block h-full`}
               >
                 {/* Inner card */}

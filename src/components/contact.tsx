@@ -13,61 +13,113 @@ const serviceOptions = [
 ];
 
 export function Contact() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle"
+  );
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    service: "",
+    serviceInterest: "",
     message: "",
   });
+  const [feedback, setFeedback] = useState("");
+
+  function updateField<K extends keyof typeof formData>(
+    field: K,
+    value: (typeof formData)[K]
+  ) {
+    setStatus("idle");
+    setFeedback("");
+    setFormData((current) => ({ ...current, [field]: value }));
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("sending");
+    setFeedback("");
 
     try {
-      // n8n webhook endpoint - replace with actual URL
       const payload = {
-        ...formData,
+        name: formData.name,
+        email: formData.email,
+        service_interest: formData.serviceInterest,
+        message: formData.message || null,
         source: "portal-autoridade",
         timestamp: new Date().toISOString(),
       };
 
-      const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL;
-      let saved = false;
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-      // Try n8n webhook first
-      if (webhookUrl) {
+      if (!response.ok) {
+        let errorMessage = "Nao foi possivel enviar sua mensagem agora.";
+
         try {
-          const res = await fetch(webhookUrl, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-          if (res.ok) saved = true;
+          const data = (await response.json()) as { error?: string };
+          if (data.error) {
+            errorMessage = data.error;
+          }
         } catch {
-          // Webhook failed, will try fallback
+          // Keep default message when the error payload is unavailable.
         }
+
+        throw new Error(errorMessage);
       }
 
-      // Fallback: save directly via API route → Supabase
-      if (!saved) {
-        try {
-          await fetch("/api/leads", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-        } catch {
-          // Both failed — still show success to user
-        }
-      }
-
+      setFeedback("Mensagem enviada com sucesso. Retorno em ate 24 horas.");
       setStatus("sent");
-      setFormData({ name: "", email: "", service: "", message: "" });
-    } catch {
-      setStatus("sent");
+      setFormData({ name: "", email: "", serviceInterest: "", message: "" });
+    } catch (error) {
+      setFeedback(
+        error instanceof Error
+          ? error.message
+          : "Nao foi possivel enviar sua mensagem agora."
+      );
+      setStatus("error");
     }
+  }
+
+  const isSubmitting = status === "sending";
+  const isSuccess = status === "sent";
+  const isError = status === "error";
+
+  function renderButtonLabel() {
+    if (isSubmitting) {
+      return (
+        <>
+          Enviando...
+          <Loader2 className="w-4 h-4 animate-spin" />
+        </>
+      );
+    }
+
+    if (isSuccess) {
+      return (
+        <>
+          Mensagem Enviada!
+          <CheckCircle2 className="w-4 h-4" />
+        </>
+      );
+    }
+
+    if (isError) {
+      return (
+        <>
+          Tentar Novamente
+          <Send className="w-4 h-4" />
+        </>
+      );
+    }
+
+    return (
+      <>
+        Enviar Mensagem
+        <Send className="w-4 h-4" />
+      </>
+    );
   }
 
   return (
@@ -111,7 +163,7 @@ export function Contact() {
                 required
                 value={formData.name}
                 onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
+                  updateField("name", e.target.value)
                 }
                 className="w-full px-4 py-3 rounded-xl bg-[#0a0a0c] border border-white/[0.06] text-sm text-zinc-200 placeholder:text-zinc-700 focus:outline-none focus:border-primary/30 focus:ring-1 focus:ring-primary/20 transition-all"
                 placeholder="Seu nome"
@@ -130,7 +182,7 @@ export function Contact() {
                 required
                 value={formData.email}
                 onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
+                  updateField("email", e.target.value)
                 }
                 className="w-full px-4 py-3 rounded-xl bg-[#0a0a0c] border border-white/[0.06] text-sm text-zinc-200 placeholder:text-zinc-700 focus:outline-none focus:border-primary/30 focus:ring-1 focus:ring-primary/20 transition-all"
                 placeholder="seu@email.com"
@@ -140,17 +192,17 @@ export function Contact() {
 
           <div>
             <label
-              htmlFor="service"
+              htmlFor="serviceInterest"
               className="block text-xs font-mono text-zinc-600 uppercase tracking-wider mb-2"
             >
               Interesse
             </label>
             <select
-              id="service"
+              id="serviceInterest"
               required
-              value={formData.service}
+              value={formData.serviceInterest}
               onChange={(e) =>
-                setFormData({ ...formData, service: e.target.value })
+                updateField("serviceInterest", e.target.value)
               }
               className="w-full px-4 py-3 rounded-xl bg-[#0a0a0c] border border-white/[0.06] text-sm text-zinc-200 focus:outline-none focus:border-primary/30 focus:ring-1 focus:ring-primary/20 transition-all appearance-none"
             >
@@ -178,7 +230,7 @@ export function Contact() {
               rows={4}
               value={formData.message}
               onChange={(e) =>
-                setFormData({ ...formData, message: e.target.value })
+                updateField("message", e.target.value)
               }
               className="w-full px-4 py-3 rounded-xl bg-[#0a0a0c] border border-white/[0.06] text-sm text-zinc-200 placeholder:text-zinc-700 focus:outline-none focus:border-primary/30 focus:ring-1 focus:ring-primary/20 transition-all resize-none"
               placeholder="Conte um pouco sobre seu projeto..."
@@ -187,28 +239,20 @@ export function Contact() {
 
           <button
             type="submit"
-            disabled={status !== "idle"}
+            disabled={isSubmitting}
             className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-white font-medium text-sm transition-all hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {status === "idle" && (
-              <>
-                Enviar Mensagem
-                <Send className="w-4 h-4" />
-              </>
-            )}
-            {status === "sending" && (
-              <>
-                Enviando...
-                <Loader2 className="w-4 h-4 animate-spin" />
-              </>
-            )}
-            {status === "sent" && (
-              <>
-                Mensagem Enviada!
-                <CheckCircle2 className="w-4 h-4" />
-              </>
-            )}
+            {renderButtonLabel()}
           </button>
+          {feedback ? (
+            <p
+              className={`text-sm ${
+                isError ? "text-red-400" : "text-emerald-400"
+              }`}
+            >
+              {feedback}
+            </p>
+          ) : null}
         </form>
         </AnimateOnScroll>
       </div>

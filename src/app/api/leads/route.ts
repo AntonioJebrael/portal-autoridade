@@ -1,56 +1,211 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 
-export async function POST(request: Request) {
+type LeadPayload = {
+  name: string;
+  email: string;
+  service_interest: string;
+  message: string | null;
+  source: string;
+  timestamp: string;
+};
+
+const workspaceEnv = new Map<string, string>();
+let workspaceEnvLoaded = false;
+
+function getStringValue(value: unknown) {
+  return typeof value === "string" ? value.trim() : "";
+}
+
+function loadWorkspaceEnv() {
+  if (workspaceEnvLoaded) {
+    return;
+  }
+
+  const candidates = [
+    resolve(/* turbopackIgnore: true */ process.cwd(), ".env.local"),
+    resolve(/* turbopackIgnore: true */ process.cwd(), ".env"),
+    resolve(/* turbopackIgnore: true */ process.cwd(), ".env.example"),
+    resolve(/* turbopackIgnore: true */ process.cwd(), "../.env.local"),
+    resolve(/* turbopackIgnore: true */ process.cwd(), "../.env"),
+    resolve(/* turbopackIgnore: true */ process.cwd(), "../.env.example"),
+  ];
+
+  for (const filePath of candidates) {
+    if (!existsSync(filePath)) {
+      continue;
+    }
+
+    const content = readFileSync(filePath, "utf8");
+    for (const rawLine of content.split(/\r?\n/)) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith("#")) {
+        continue;
+      }
+
+      const separatorIndex = line.indexOf("=");
+      if (separatorIndex === -1) {
+        continue;
+      }
+
+      const key = line.slice(0, separatorIndex).trim();
+      let value = line.slice(separatorIndex + 1).trim();
+
+      if (
+        (value.startsWith('"') && value.endsWith('"')) ||
+        (value.startsWith("'") && value.endsWith("'"))
+      ) {
+        value = value.slice(1, -1);
+      }
+
+      if (!workspaceEnv.has(key) && value) {
+        workspaceEnv.set(key, value);
+      }
+    }
+  }
+
+  workspaceEnvLoaded = true;
+}
+
+function getEnvValue(key: string) {
+  const value = process.env[key];
+  if (value) {
+    return value;
+  }
+
+  loadWorkspaceEnv();
+  return workspaceEnv.get(key);
+}
+
+function normalizeLeadPayload(body: Record<string, unknown>): LeadPayload | null {
+  const name = getStringValue(body.name);
+  const email = getStringValue(body.email);
+  const serviceInterest = getStringValue(
+    body.service_interest ?? body.service
+  );
+  const message = getStringValue(body.message);
+  const source = getStringValue(body.source) || "portal-autoridade";
+  const timestamp = getStringValue(body.timestamp) || new Date().toISOString();
+
+  if (!name || !email || !serviceInterest) {
+    return null;
+  }
+
+  return {
+    name,
+    email,
+    service_interest: serviceInterest,
+    message: message || null,
+    source,
+    timestamp,
+  };
+}
+
+async function persistLead(lead: LeadPayload) {
+  const supabaseUrl =
+    getEnvValue("SUPABASE_URL") || getEnvValue("NEXT_PUBLIC_SUPABASE_URL");
+  const supabaseKey = getEnvValue("SUPABASE_SERVICE_ROLE_KEY");
+
+  if (!supabaseUrl || !supabaseKey) {
+    console.error("Supabase credentials not configured");
+    return NextResponse.json(
+      { error: "Service temporarily unavailable" },
+      { status: 503 }
+    );
+  }
+
+  const response = await fetch(`${supabaseUrl}/rest/v1/leads`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      apikey: supabaseKey,
+      Authorization: `Bearer ${supabaseKey}`,
+      Prefer: "return=minimal",
+    },
+    body: JSON.stringify({
+      name: lead.name,
+      email: lead.email,
+      service_interest: lead.service_interest,
+      message: lead.message,
+      source: lead.source,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("Supabase insert failed:", errorText);
+    return NextResponse.json(
+      { error: "Failed to save lead" },
+      { status: 500 }
+    );
+  }
+
+  return null;
+}
+
+async function notifyLeadAutomation(lead: LeadPayload) {
+  const webhookUrl =
+    getEnvValue("N8N_WEBHOOK_URL") ||
+    getEnvValue("NEXT_PUBLIC_N8N_WEBHOOK_URL");
+
+  if (!webhookUrl) {
+    return;
+  }
+
+  const notificationTarget = (
+    getEnvValue("LEAD_NOTIFICATION_PHONE") || "5521967757938"
+  ).replace(/\D/g, "");
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 1500);
+
   try {
-    const body = await request.json();
-    const { name, email, service, message } = body;
-
-    if (!name || !email || !service) {
-      return NextResponse.json(
-        { error: "name, email and service are required" },
-        { status: 400 }
-      );
-    }
-
-    // Supabase direct insert (fallback when n8n webhook is unavailable)
-    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-    if (!supabaseUrl || !supabaseKey) {
-      console.error("Supabase credentials not configured");
-      return NextResponse.json(
-        { error: "Service temporarily unavailable" },
-        { status: 503 }
-      );
-    }
-
-    const response = await fetch(`${supabaseUrl}/rest/v1/leads`, {
+    const response = await fetch(webhookUrl, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        apikey: supabaseKey,
-        Authorization: `Bearer ${supabaseKey}`,
-        Prefer: "return=minimal",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name,
-        email,
-        service_interest: service,
-        message: message || null,
-        source: "portal-autoridade-fallback",
+        ...lead,
+        notification_target: notificationTarget,
       }),
+      signal: controller.signal,
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("Supabase insert failed:", errorText);
+      console.error("n8n webhook failed:", errorText);
+    }
+  } catch (error) {
+    console.error("n8n webhook error:", error);
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+export async function POST(request: Request) {
+  const startedAt = Date.now();
+
+  try {
+    const body = (await request.json()) as Record<string, unknown>;
+    const lead = normalizeLeadPayload(body);
+
+    if (!lead) {
       return NextResponse.json(
-        { error: "Failed to save lead" },
-        { status: 500 }
+        { error: "name, email and service_interest are required" },
+        { status: 400 }
       );
     }
 
-    return NextResponse.json({ success: true });
+    const persistError = await persistLead(lead);
+    if (persistError) {
+      return persistError;
+    }
+
+    after(() => notifyLeadAutomation(lead));
+
+    return NextResponse.json({
+      success: true,
+      processing_ms: Date.now() - startedAt,
+    });
   } catch (error) {
     console.error("Lead API error:", error);
     return NextResponse.json(

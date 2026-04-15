@@ -17,6 +17,11 @@ function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export function Footer() {
+  const phoneNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5500000000000").replace(/\D/g, "");
+  const whatsappMessage = encodeURIComponent(
+    "Olá Antonio! Vi seu site e gostaria de saber mais sobre seus serviços."
+  );
+
   return (
     <footer className="relative border-t border-white/[0.04] py-12">
       <div className="max-w-6xl mx-auto px-6">
@@ -39,7 +44,7 @@ export function Footer() {
           {/* Social links */}
           <div className="flex items-center gap-3">
             <a
-              href="#"
+              href="https://github.com/AntonioJebrael"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 rounded-lg border border-white/[0.06] flex items-center justify-center text-zinc-600 hover:text-white hover:border-white/[0.12] transition-all"
@@ -48,7 +53,7 @@ export function Footer() {
               <GithubIcon className="w-4 h-4" />
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/antonio-jebrael/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 rounded-lg border border-white/[0.06] flex items-center justify-center text-zinc-600 hover:text-white hover:border-white/[0.12] transition-all"
@@ -57,7 +62,7 @@ export function Footer() {
               <LinkedinIcon className="w-4 h-4" />
             </a>
             <a
-              href="#"
+              href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
               target="_blank"
               rel="noopener noreferrer"
               className="w-9 h-9 rounded-lg border border-white/[0.06] flex items-center justify-center text-zinc-600 hover:text-[#25d366] hover:border-[#25d366]/20 transition-all"
