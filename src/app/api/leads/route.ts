@@ -105,12 +105,15 @@ function normalizeLeadPayload(body: Record<string, unknown>): LeadPayload | null
 async function persistLead(lead: LeadPayload) {
   const supabaseUrl =
     getEnvValue("SUPABASE_URL") || getEnvValue("NEXT_PUBLIC_SUPABASE_URL");
-  const supabaseKey = getEnvValue("SUPABASE_SERVICE_ROLE_KEY");
+  const supabaseKey =
+    getEnvValue("SUPABASE_SERVICE_ROLE_KEY") ||
+    getEnvValue("SUPABASE_ANON_KEY") ||
+    getEnvValue("NEXT_PUBLIC_SUPABASE_ANON_KEY");
 
   if (!supabaseUrl || !supabaseKey) {
-    console.error("Supabase credentials not configured");
+    console.error("Supabase credentials not configured for lead capture");
     return NextResponse.json(
-      { error: "Service temporarily unavailable" },
+      { error: "Serviço temporariamente indisponível." },
       { status: 503 }
     );
   }
@@ -136,7 +139,7 @@ async function persistLead(lead: LeadPayload) {
     const errorText = await response.text();
     console.error("Supabase insert failed:", errorText);
     return NextResponse.json(
-      { error: "Failed to save lead" },
+      { error: "Não foi possível salvar seu contato agora." },
       { status: 500 }
     );
   }
@@ -190,7 +193,7 @@ export async function POST(request: Request) {
 
     if (!lead) {
       return NextResponse.json(
-        { error: "name, email and service_interest are required" },
+        { error: "Nome, e-mail e interesse são obrigatórios." },
         { status: 400 }
       );
     }
@@ -209,7 +212,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Lead API error:", error);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Erro interno ao processar seu contato." },
       { status: 500 }
     );
   }
