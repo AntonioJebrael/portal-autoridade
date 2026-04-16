@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Antonio Jebrael — The AI Architect";
+export const alt = "Antonio Jebrael — Arquiteto de IA";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -65,7 +65,7 @@ export default function OGImage() {
               textTransform: "uppercase",
             }}
           >
-            The AI Architect
+            Arquiteto de IA
           </p>
         </div>
 

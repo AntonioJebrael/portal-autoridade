@@ -5,10 +5,10 @@ import { AnimateOnScroll } from "./animate-on-scroll";
 
 const projects = [
   {
-    title: "Viapro",
-    tag: "Flagship Product",
+    title: "ViaPro",
+    tag: "Produto principal",
     description:
-      "Plataforma SaaS para investidores imobiliários. Gestão inteligente de leads, imóveis e automações de follow-up.",
+      "Software para análise de viabilidade para parcelamento de solo, com apoio à tomada de decisão imobiliária.",
     stack: ["Next.js", "Supabase", "Vercel", "n8n"],
     href: "https://viapro-three.vercel.app/",
     icon: Cpu,
@@ -18,10 +18,10 @@ const projects = [
   },
   {
     title: "TechTalks Brasil",
-    tag: "Content Platform",
+    tag: "Plataforma de conteúdo",
     description:
       "Canal de conteúdo técnico sobre engenharia de software, IA e automação. Educação e posicionamento de autoridade.",
-    stack: ["Content", "YouTube", "Community"],
+    stack: ["Conteúdo", "YouTube", "Comunidade"],
     href: "https://www.techtalksbrasil.com.br/",
     icon: Video,
     featured: false,
@@ -30,10 +30,10 @@ const projects = [
   },
   {
     title: "AIOX Framework",
-    tag: "Open Source",
+    tag: "Código aberto",
     description:
       "Framework proprietário de orquestração de agentes IA. Sistema multi-agente para desenvolvimento full-stack assistido.",
-    stack: ["TypeScript", "Node.js", "AI Agents", "CLI"],
+    stack: ["TypeScript", "Node.js", "Agentes de IA", "CLI"],
     href: "https://github.com/SynkraAI/aiox-core",
     icon: Sparkles,
     featured: false,
@@ -75,8 +75,8 @@ export function Projects() {
               Em Produção
             </h2>
             <p className="text-zinc-500 mt-3 max-w-md mx-auto">
-              Produtos e projetos que demonstram capacidade técnica real — do
-              conceito ao deploy.
+              Produtos e projetos que demonstram capacidade técnica real, da
+              concepção à publicação.
             </p>
           </div>
         </AnimateOnScroll>

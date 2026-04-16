@@ -5,36 +5,36 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://antoniojebrael.dev"),
-  title: "Antonio Jebrael — The AI Architect",
+  title: "Antonio Jebrael — Arquiteto de IA",
   description:
-    "Engenharia de Software e IA para negócios. Automações inteligentes, agentes SDR e consultoria técnica de alto nível.",
+    "Engenharia de software e IA para negócios. Automações inteligentes, agentes de IA e consultoria técnica de alto nível.",
   alternates: {
     canonical: "/",
   },
   keywords: [
     "Antonio Jebrael",
-    "AI Architect",
-    "Engenharia de Software",
-    "Inteligência Artificial",
+    "Arquiteto de IA",
+    "Engenharia de software",
+    "Inteligência artificial",
     "Automação",
     "n8n",
-    "Consultoria IA",
+    "Consultoria em IA",
     "Next.js",
     "Supabase",
   ],
   authors: [{ name: "Antonio Jebrael" }],
   openGraph: {
-    title: "Antonio Jebrael — The AI Architect",
+    title: "Antonio Jebrael — Arquiteto de IA",
     description:
-      "Engenharia de Software e IA para negócios. Automações inteligentes e consultoria técnica.",
+      "Engenharia de software e IA para negócios. Automações inteligentes e consultoria técnica.",
     type: "website",
     locale: "pt_BR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Antonio Jebrael — The AI Architect",
+    title: "Antonio Jebrael — Arquiteto de IA",
     description:
-      "Engenharia de Software e IA para negócios.",
+      "Engenharia de software e IA para negócios.",
   },
   robots: {
     index: true,
@@ -60,13 +60,13 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Antonio Jebrael",
-              jobTitle: "AI Architect & Software Engineer",
+              jobTitle: "Arquiteto de IA e engenheiro de software",
               description:
-                "Especialista em Engenharia de Software e IA, criador do Viapro e AIOX Framework.",
+                "Especialista em engenharia de software e IA, criador do ViaPro e do AIOX Framework.",
               knowsAbout: [
-                "Artificial Intelligence",
-                "Software Engineering",
-                "Automation",
+                "Inteligência artificial",
+                "Engenharia de software",
+                "Automação",
                 "Next.js",
                 "Supabase",
                 "n8n",

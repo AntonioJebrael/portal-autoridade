@@ -9,13 +9,13 @@ const services = [
     title: "Automações n8n",
     subtitle: "Para negócios locais",
     description:
-      "Workflows inteligentes que conectam seus sistemas e eliminam trabalho manual. Qualificação de leads, follow-ups automáticos e integrações com WhatsApp.",
+      "Workflows inteligentes que conectam seus sistemas e eliminam trabalho manual. Qualificação de leads, acompanhamentos automáticos e integrações com WhatsApp.",
     features: [
       "Workflows customizados",
       "Integração WhatsApp",
       "Qualificação automática de leads",
     ],
-    cta: "Automatize seu Negócio",
+    cta: "Automatize seu negócio",
     ctaHref: "#contato",
     accent: "blue",
   },
@@ -24,13 +24,13 @@ const services = [
     title: "Agentes SDR",
     subtitle: "Prospecção inteligente",
     description:
-      "Agentes de IA que prospectam, qualificam e agendam reuniões automaticamente. SDR 24/7 que nunca para de trabalhar para você.",
+      "Agentes de IA que prospectam, qualificam e agendam reuniões automaticamente. Um SDR digital que trabalha 24/7 para você.",
     features: [
       "Prospecção automatizada",
       "Qualificação com IA",
       "Agendamento inteligente",
     ],
-    cta: "Conheça os Agentes",
+    cta: "Conheça os agentes",
     ctaHref: "#contato",
     accent: "cyan",
   },
@@ -39,13 +39,13 @@ const services = [
     title: "Engenharia de Software",
     subtitle: "Consultoria técnica",
     description:
-      "Arquitetura de sistemas, code review, mentoria técnica e desenvolvimento assistido por IA. Do MVP à escala com as melhores práticas.",
+      "Arquitetura de sistemas, revisão de código, mentoria técnica e desenvolvimento assistido por IA. Do MVP à escala com as melhores práticas.",
     features: [
       "Arquitetura de sistemas",
       "Code review & mentoria",
-      "MVP to Scale",
+      "MVP à escala",
     ],
-    cta: "Agende Consultoria",
+    cta: "Agende consultoria",
     ctaHref: "#contato",
     accent: "emerald",
   },
@@ -86,7 +86,7 @@ export function Services() {
               Serviços
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-gradient">
-              Como Posso Ajudar
+              Como posso ajudar
             </h2>
             <p className="text-zinc-500 mt-3 max-w-lg mx-auto">
               Soluções de curto e médio prazo com foco em resultado mensurável e

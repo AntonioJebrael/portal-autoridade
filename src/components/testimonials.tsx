@@ -15,26 +15,26 @@ export const testimonialEntries: TestimonialEntry[] = [
   {
     initials: "MS",
     name: "Marina S.",
-    role: "Lider de Operacoes",
+    role: "Líder de Operações",
     company: "Consultoria B2B",
     reviewBody:
-      "A principal diferenca foi a clareza para transformar uma demanda confusa em execucao objetiva. O projeto ganhou ritmo sem perder criterio tecnico.",
+      "A principal diferença foi a clareza para transformar uma demanda confusa em execução objetiva. O projeto ganhou ritmo sem perder critério técnico.",
   },
   {
     initials: "RC",
     name: "Rafael C.",
     role: "Head de Growth",
-    company: "Empresa de Servicos Digitais",
+    company: "Empresa de Serviços Digitais",
     reviewBody:
-      "A entrega combinou velocidade com boa leitura de negocio. Nao foi so implementacao: houve preocupacao real com impacto operacional e priorizacao.",
+      "A entrega combinou velocidade com boa leitura de negócio. Não foi só implementação: houve preocupação real com impacto operacional e priorização.",
   },
   {
     initials: "AL",
     name: "Ana L.",
     role: "Diretora Comercial",
-    company: "Operacao Regional de Vendas",
+    company: "Operação Regional de Vendas",
     reviewBody:
-      "O trabalho trouxe mais organizacao para a operacao e melhor visibilidade do que precisava acontecer primeiro. Passou seguranca de execucao desde o inicio.",
+      "O trabalho trouxe mais organização para a operação e melhor visibilidade do que precisava acontecer primeiro. Passou segurança de execução desde o início.",
   },
 ];
 
@@ -51,11 +51,11 @@ export function Testimonials() {
                 O que dizem
               </span>
               <h2 className="mt-3 text-3xl font-bold text-gradient sm:text-4xl">
-                Confianca nasce de execucao consistente.
+                Confiança nasce de execução consistente.
               </h2>
               <p className="mt-4 max-w-2xl text-zinc-500">
-                Feedbacks que representam o tipo de percepcao que mais importa em projetos
-                tecnicos: clareza, ritmo de entrega e criterio para decidir o que vem primeiro.
+                Feedbacks que representam o tipo de percepção que mais importa em projetos
+                técnicos: clareza, ritmo de entrega e critério para decidir o que vem primeiro.
               </p>
             </div>
 
@@ -67,7 +67,7 @@ export function Testimonials() {
                 <div>
                   <p className="text-sm font-medium text-zinc-100">Sinal de credibilidade</p>
                   <p className="mt-2 text-sm leading-7 text-zinc-500">
-                    Uma seção mais institucional, pensada para reforcar confianca sem exagero de
+                    Uma seção mais institucional, pensada para reforçar confiança sem exagero de
                     tom nem marketing artificial.
                   </p>
                 </div>

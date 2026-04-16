@@ -50,7 +50,7 @@ export function SocialProof() {
         <AnimateOnScroll>
           <div className="text-center mb-16">
             <span className="text-xs font-mono text-primary tracking-widest uppercase">
-              Expertise
+              Especialidade
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-gradient">
               Stack & Números
@@ -100,9 +100,9 @@ export function SocialProof() {
             {[
               { label: "Frontend", cat: "frontend" },
               { label: "Backend", cat: "backend" },
-              { label: "Languages", cat: "language" },
+              { label: "Linguagens", cat: "language" },
               { label: "AI/ML", cat: "ai" },
-              { label: "Automation", cat: "automation" },
+              { label: "Automação", cat: "automation" },
               { label: "Infra", cat: "infra" },
             ].map((item) => (
               <div key={item.cat} className="flex items-center gap-1.5">

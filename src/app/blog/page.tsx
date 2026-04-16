@@ -10,21 +10,21 @@ import { getAllBlogPosts } from "@/lib/blog";
 export const metadata: Metadata = {
   title: "Blog | Antonio Jebrael",
   description:
-    "Artigos sobre IA aplicada, automacao e engenharia para transformar leitura em acao comercial.",
+    "Artigos sobre IA aplicada, automação e engenharia para transformar leitura em ação comercial.",
   alternates: {
     canonical: "/blog",
   },
   openGraph: {
     title: "Blog | Antonio Jebrael",
     description:
-      "Artigos sobre IA aplicada, automacao e engenharia para transformar leitura em acao comercial.",
+      "Artigos sobre IA aplicada, automação e engenharia para transformar leitura em ação comercial.",
     url: "/blog",
     type: "website",
   },
   twitter: {
     title: "Blog | Antonio Jebrael",
     description:
-      "Artigos sobre IA aplicada, automacao e engenharia para transformar leitura em acao comercial.",
+      "Artigos sobre IA aplicada, automação e engenharia para transformar leitura em ação comercial.",
   },
 };
 
@@ -52,11 +52,11 @@ export default function BlogPage() {
               <div>
                 <p className="text-xs uppercase tracking-[0.32em] text-blue-300">Blog</p>
                 <h1 className="mt-4 max-w-[12ch] text-5xl font-semibold tracking-tight text-zinc-50 sm:text-6xl">
-                  Conteudo para gerar demanda com clareza.
+                  Conteúdo para gerar demanda com clareza.
                 </h1>
                 <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
-                  Artigos pensados para quem quer transformar IA, automacao e engenharia em
-                  resultado de negocio, nao em ruido tecnico.
+                  Artigos pensados para quem quer transformar IA, automação e engenharia em
+                  resultado de negócio, não em ruído técnico.
                 </p>
               </div>
 
@@ -66,14 +66,14 @@ export default function BlogPage() {
                 </p>
                 <p className="mt-4 text-2xl font-semibold text-zinc-50">Lista simples, foco alto.</p>
                 <p className="mt-3 text-sm leading-7 text-zinc-400">
-                  Sem busca, sem filtros e sem distrações. So o conteudo certo para puxar a
+                  Sem busca, sem filtros e sem distrações. Só o conteúdo certo para puxar a
                   conversa para WhatsApp ou consultoria.
                 </p>
                 <Link
                   href="/#contato"
                   className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-blue-300 transition-all hover:gap-3 hover:text-white"
                 >
-                  Falar sobre uma estrategia de conteudo
+                  Falar sobre uma estratégia de conteúdo
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
               </div>
@@ -89,7 +89,7 @@ export default function BlogPage() {
                   Publicados agora
                 </p>
                 <h2 className="mt-3 text-2xl font-semibold text-zinc-50 sm:text-3xl">
-                  Leituras para destravar acao.
+                  Leituras para destravar ação.
                 </h2>
               </div>
               <p className="text-sm text-zinc-500">{posts.length} artigos</p>

@@ -12,7 +12,7 @@ describe("blog content source", () => {
     expect(slugs).toContain("o-que-e-vibe-coding-e-por-que-voce-deveria-adotar");
     expect(slugs).toContain("como-automatizar-seu-negocio-com-n8n");
     expect(titles).toContain(
-      "Como a Inteligencia Artificial Transforma o Atendimento de Vendas no WhatsApp",
+      "Como a Inteligência Artificial Transforma o Atendimento de Vendas no WhatsApp",
     );
     expect(titles).toContain(
       "Automatizando Processos Internos: Como Escalar sua Empresa sem Aumentar a Equipe",

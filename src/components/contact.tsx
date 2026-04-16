@@ -5,8 +5,8 @@ import { Send, Loader2, CheckCircle2 } from "lucide-react";
 import { AnimateOnScroll } from "./animate-on-scroll";
 
 const serviceOptions = [
-  "Automações n8n",
-  "Agentes SDR / IA",
+  "Automações com n8n",
+  "Agentes de IA / SDR",
   "Consultoria Técnica",
   "Desenvolvimento de MVP",
   "Outro",
@@ -55,7 +55,7 @@ export function Contact() {
       });
 
       if (!response.ok) {
-        let errorMessage = "Nao foi possivel enviar sua mensagem agora.";
+        let errorMessage = "Não foi possível enviar sua mensagem agora.";
 
         try {
           const data = (await response.json()) as { error?: string };
@@ -69,14 +69,14 @@ export function Contact() {
         throw new Error(errorMessage);
       }
 
-      setFeedback("Mensagem enviada com sucesso. Retorno em ate 24 horas.");
+      setFeedback("Mensagem enviada com sucesso. Retorno em até 24 horas.");
       setStatus("sent");
       setFormData({ name: "", email: "", serviceInterest: "", message: "" });
     } catch (error) {
       setFeedback(
         error instanceof Error
           ? error.message
-          : "Nao foi possivel enviar sua mensagem agora."
+          : "Não foi possível enviar sua mensagem agora."
       );
       setStatus("error");
     }
@@ -99,7 +99,7 @@ export function Contact() {
     if (isSuccess) {
       return (
         <>
-          Mensagem Enviada!
+          Mensagem enviada!
           <CheckCircle2 className="w-4 h-4" />
         </>
       );
@@ -108,7 +108,7 @@ export function Contact() {
     if (isError) {
       return (
         <>
-          Tentar Novamente
+          Tentar novamente
           <Send className="w-4 h-4" />
         </>
       );
@@ -116,7 +116,7 @@ export function Contact() {
 
     return (
       <>
-        Enviar Mensagem
+        Enviar mensagem
         <Send className="w-4 h-4" />
       </>
     );
@@ -138,10 +138,10 @@ export function Contact() {
               Contato
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-gradient">
-              Vamos Conversar
+              Vamos conversar
             </h2>
             <p className="text-zinc-500 mt-3">
-              Me conte sobre seu projeto. Respondo em até 24 horas.
+              Me conte sobre o seu projeto. Respondo em até 24 horas.
             </p>
           </div>
         </AnimateOnScroll>
@@ -174,7 +174,7 @@ export function Contact() {
                 htmlFor="email"
                 className="block text-xs font-mono text-zinc-600 uppercase tracking-wider mb-2"
               >
-                Email
+                E-mail
               </label>
               <input
                 id="email"
@@ -233,7 +233,7 @@ export function Contact() {
                 updateField("message", e.target.value)
               }
               className="w-full px-4 py-3 rounded-xl bg-[#0a0a0c] border border-white/[0.06] text-sm text-zinc-200 placeholder:text-zinc-700 focus:outline-none focus:border-primary/30 focus:ring-1 focus:ring-primary/20 transition-all resize-none"
-              placeholder="Conte um pouco sobre seu projeto..."
+              placeholder="Conte um pouco sobre o seu projeto..."
             />
           </div>
 

@@ -79,7 +79,7 @@ function buildWhatsAppHref(title: string) {
     "",
   );
   const message = encodeURIComponent(
-    `Ola Antonio! Li seu artigo "${title}" e quero entender como aplicar isso no meu negocio.`,
+    `Olá Antonio! Li seu artigo "${title}" e quero entender como aplicar isso no meu negócio.`,
   );
 
   return `https://wa.me/${phoneNumber}?text=${message}`;
@@ -134,14 +134,14 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
 
                 <div className="mt-16 rounded-[28px] border border-white/10 bg-white/[0.03] p-6 sm:p-8">
                   <p className="text-xs uppercase tracking-[0.3em] text-blue-300">
-                    Proximo passo
+                    Próximo passo
                   </p>
                   <h2 className="mt-4 text-2xl font-semibold text-zinc-50">
-                    Transforme leitura em uma decisao pratica.
+                    Transforme leitura em uma decisão prática.
                   </h2>
                   <p className="mt-3 max-w-2xl text-sm leading-7 text-zinc-400">
-                    Se esse tema conversa com o momento da sua operacao, eu posso te mostrar onde
-                    IA, automacao e engenharia entregam retorno mais rapido no seu caso.
+                    Se esse tema conversa com o momento da sua operação, eu posso te mostrar onde
+                    IA, automação e engenharia entregam retorno mais rápido no seu caso.
                   </p>
 
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row">
@@ -170,11 +170,11 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
               <div className="rounded-[28px] border border-white/[0.08] bg-[#0a0a0c] p-6">
                 <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">Leitura focada</p>
                 <p className="mt-4 text-lg font-semibold text-zinc-50">
-                  Artigos feitos para gerar conversa comercial, nao impressao vazia.
+                  Artigos feitos para gerar conversa comercial, não impressão vazia.
                 </p>
                 <p className="mt-3 text-sm leading-7 text-zinc-400">
-                  Cada texto aponta para uma aplicacao real no funil, no atendimento ou na
-                  operacao.
+                  Cada texto aponta para uma aplicação real no funil, no atendimento ou na
+                  operação.
                 </p>
               </div>
 

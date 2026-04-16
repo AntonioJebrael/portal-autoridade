@@ -1,39 +1,39 @@
 const milestones = [
   {
     year: "2021",
-    title: "Inicio na Programacao",
+    title: "Início na Programação",
     description:
-      "Primeiros passos com Python e desenvolvimento web. Foco em automacao e scripts.",
+      "Primeiros passos com Python e desenvolvimento web. Foco em automação e scripts.",
   },
   {
     year: "2022",
     title: "Engenharia de Software",
     description:
-      "Transicao para desenvolvimento profissional. TypeScript, React e arquitetura de sistemas.",
+      "Transição para desenvolvimento profissional. TypeScript, React e arquitetura de sistemas.",
   },
   {
     year: "2023",
-    title: "IA & Automacao",
+    title: "IA e Automação",
     description:
-      "Mergulho em Inteligencia Artificial, n8n, agentes autonomos e LLMs para negocios.",
+      "Mergulho em Inteligência Artificial, n8n, agentes autônomos e LLMs para negócios.",
   },
   {
     year: "2024",
-    title: "Viapro & Produtos",
+    title: "ViaPro e Produtos",
     description:
-      "Lancamento do Viapro — plataforma SaaS para investidores imobiliarios com Next.js e Supabase.",
+      "Lançamento do ViaPro - software de análise de viabilidade para parcelamento de solo.",
   },
   {
     year: "2025",
     title: "AIOX Framework",
     description:
-      "Criacao do framework de orquestracao de agentes IA. TechTalksBrasil e Maya AI.",
+      "Criação do framework de orquestração de agentes de IA. TechTalks Brasil e Maya AI.",
   },
   {
     year: "2026",
-    title: "The AI Architect",
+    title: "O Arquiteto de IA",
     description:
-      "Portal de autoridade, consultoria tecnica e expansao do ecossistema de produtos.",
+      "Portal de autoridade, consultoria técnica e expansão do ecossistema de produtos.",
   },
 ];
 
@@ -47,13 +47,13 @@ export function Timeline() {
         {/* Section header */}
         <div className="text-center mb-16">
           <span className="text-xs font-mono text-primary tracking-widest uppercase">
-            Trajetoria
+            Trajetória
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-gradient">
-            Experiencia Profissional
+            Experiência Profissional
           </h2>
           <p className="text-zinc-500 mt-3 max-w-md mx-auto">
-            Do primeiro script ao ecossistema de produtos — cada ano uma evolucao.
+            Do primeiro script ao ecossistema de produtos, cada ano uma evolução.
           </p>
         </div>
 

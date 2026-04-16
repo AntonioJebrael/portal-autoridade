@@ -19,7 +19,7 @@ function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
 export function Footer() {
   const phoneNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5500000000000").replace(/\D/g, "");
   const whatsappMessage = encodeURIComponent(
-    "Olá Antonio! Vi seu site e gostaria de saber mais sobre seus serviços."
+    "Olá, Antonio! Vi seu site e gostaria de saber mais sobre seus serviços."
   );
 
   return (
@@ -38,7 +38,7 @@ export function Footer() {
 
           {/* Center */}
           <p className="text-xs text-zinc-700 font-mono">
-            Built with Next.js + Supabase + n8n
+            Feito com Next.js + Supabase + n8n
           </p>
 
           {/* Social links */}

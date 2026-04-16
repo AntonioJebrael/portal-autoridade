@@ -71,7 +71,7 @@ function buildWhatsAppHref(message?: string) {
   );
   const text = encodeURIComponent(
     message ||
-      "Ola Antonio! Li seu artigo e quero entender como aplicar isso no meu negocio.",
+      "Olá Antonio! Li seu artigo e quero entender como aplicar isso no meu negócio.",
   );
 
   return `https://wa.me/${phoneNumber}?text=${text}`;

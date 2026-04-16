@@ -13,7 +13,7 @@ export function Hero() {
         <div className="animate-fade-in-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.06] bg-white/[0.03] mb-8">
           <Sparkles className="w-3.5 h-3.5 text-primary" />
           <span className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
-            AI Architect & Software Engineer
+            Arquiteto de IA e Engenharia de Software
           </span>
         </div>
 
@@ -40,14 +40,14 @@ export function Hero() {
             href="#contato"
             className="group flex items-center gap-2 px-7 py-3.5 rounded-xl bg-primary text-white font-medium text-sm transition-all hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
           >
-            Agende uma Consultoria
+            Agende uma consultoria
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
           </a>
           <a
             href="#projetos"
             className="flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/[0.08] text-zinc-300 font-medium text-sm transition-all hover:border-white/[0.15] hover:bg-white/[0.03] hover:text-white"
           >
-            Conheça o Viapro
+            Conheça o ViaPro
           </a>
         </div>
 
@@ -62,7 +62,7 @@ export function Hero() {
                 <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
               </div>
               <span className="text-[11px] text-zinc-600 font-mono ml-2">
-                architect.ts
+                arquiteto.ts
               </span>
             </div>
             {/* Code content */}
@@ -72,28 +72,28 @@ export function Hero() {
                 <span className="text-zinc-600">Antonio Jebrael</span>
                 {"\n"}
                 <span className="text-blue-400">const</span>{" "}
-                <span className="text-cyan-300">architect</span>{" "}
+                <span className="text-cyan-300">arquiteto</span>{" "}
                 <span className="text-zinc-500">=</span>{" "}
                 <span className="text-zinc-500">{"{"}</span>
                 {"\n"}
-                <span className="text-zinc-400">{"  stack"}</span>
+                <span className="text-zinc-400">{"  pilha"}</span>
                 <span className="text-zinc-500">:</span>{" "}
                 <span className="text-amber-300">
                   {'"Next.js + Supabase + n8n"'}
                 </span>
                 <span className="text-zinc-500">,</span>
                 {"\n"}
-                <span className="text-zinc-400">{"  focus"}</span>
+                <span className="text-zinc-400">{"  foco"}</span>
                 <span className="text-zinc-500">:</span>{" "}
                 <span className="text-amber-300">
-                  {'"AI-Powered Automation"'}
+                  {'"Automação com IA"'}
                 </span>
                 <span className="text-zinc-500">,</span>
                 {"\n"}
                 <span className="text-zinc-400">{"  status"}</span>
                 <span className="text-zinc-500">:</span>{" "}
                 <span className="text-emerald-400">
-                  {'"Building the future"'}
+                  {'"Construindo o futuro"'}
                 </span>
                 {"\n"}
                 <span className="text-zinc-500">{"}"}</span>

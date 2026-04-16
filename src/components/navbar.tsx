@@ -9,8 +9,8 @@ const links = [
   { label: "Blog", href: "/blog", external: true },
   { label: "Projetos", href: "#projetos" },
   { label: "Serviços", href: "#servicos" },
-  { label: "Stack", href: "#stack" },
-  { label: "Trajetoria", href: "#trajetoria" },
+  { label: "Tecnologias", href: "#stack" },
+  { label: "Trajetória", href: "#trajetoria" },
   { label: "Contato", href: "#contato" },
 ];
 
@@ -77,7 +77,7 @@ export function Navbar() {
             href={resolveHref("#contato")}
             className="ml-3 px-4 py-2 text-sm font-medium text-white bg-primary/10 border border-primary/20 rounded-lg hover:bg-primary/20 transition-all"
           >
-            Fale Comigo
+            Fale comigo
           </a>
         </div>
 
@@ -120,7 +120,7 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             className="block px-3 py-2.5 text-sm font-medium text-primary"
           >
-            Fale Comigo
+            Fale comigo
           </a>
         </div>
       )}
