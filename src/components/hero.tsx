@@ -8,10 +8,10 @@ const highlights = [
 
 export function Hero() {
   return (
-    <section className="dark-panel relative min-h-[92vh] overflow-hidden pt-24 sm:pt-28">
+    <section className="dark-panel relative overflow-hidden pt-24 sm:pt-28">
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#f5f5f7] to-transparent" />
 
-      <div className="apple-container relative z-10 grid min-h-[calc(92vh-7rem)] items-center gap-12 pb-24 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="apple-container relative z-10 grid min-h-[680px] items-center gap-12 pb-24 lg:min-h-[760px] lg:grid-cols-[1.05fr_0.95fr]">
         <div className="max-w-3xl">
           <p className="apple-eyebrow animate-fade-in-up text-[#86868b]">
             Arquiteto de IA e Engenharia de Software

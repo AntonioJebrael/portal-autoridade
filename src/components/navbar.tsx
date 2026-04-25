@@ -30,10 +30,12 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const useLightChrome = scrolled || open || pathname !== "/";
+
   return (
     <nav
       className={`fixed left-0 right-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled || open ? "glass-nav text-[#1d1d1f]" : "text-white"
+        useLightChrome ? "glass-nav text-[#1d1d1f]" : "text-white"
       }`}
     >
       <div className="apple-container flex h-12 items-center justify-between">

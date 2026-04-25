@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
-import { AnimateOnScroll } from "./animate-on-scroll";
 
 const serviceOptions = [
   "Automações com n8n",
@@ -126,8 +125,7 @@ export function Contact() {
   return (
     <section id="contato" className="dark-panel py-20 sm:py-28">
       <div className="apple-container grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-        <AnimateOnScroll>
-          <div className="lg:sticky lg:top-24">
+        <div className="lg:sticky lg:top-24">
             <p className="apple-eyebrow text-[#86868b]">Contato</p>
             <h2 className="apple-display mt-3 text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">
               Vamos tirar sua operação do manual.
@@ -145,11 +143,9 @@ export function Contact() {
                 curta funciona.
               </p>
             </div>
-          </div>
-        </AnimateOnScroll>
+        </div>
 
-        <AnimateOnScroll delay={0.12}>
-          <form
+        <form
             onSubmit={handleSubmit}
             className="rounded-[32px] bg-[#f5f5f7] p-5 text-[#1d1d1f] shadow-[0_30px_100px_rgba(0,0,0,0.35)] sm:p-8"
           >
@@ -249,8 +245,7 @@ export function Contact() {
                 {feedback}
               </p>
             ) : null}
-          </form>
-        </AnimateOnScroll>
+        </form>
       </div>
     </section>
   );
