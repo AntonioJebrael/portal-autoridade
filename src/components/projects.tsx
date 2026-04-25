@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalLink, Video, Cpu } from "lucide-react";
+import { Cpu, ExternalLink, Layers3, Video } from "lucide-react";
 import { AnimateOnScroll } from "./animate-on-scroll";
 
 const projects = [
@@ -8,127 +8,116 @@ const projects = [
     title: "ViaPro",
     tag: "Produto principal",
     description:
-      "Software para análise de viabilidade para parcelamento de solo, com apoio à tomada de decisão imobiliária.",
-    stack: ["Next.js", "Supabase", "Vercel", "n8n"],
+      "Análise de viabilidade para parcelamento de solo, conectando dados, processos e decisão imobiliária.",
+    stack: ["Next.js", "Supabase", "Vercel", "Automação"],
     href: "https://viapro-three.vercel.app/",
     icon: Cpu,
     featured: true,
-    gradient: "from-blue-500/10 to-cyan-500/10",
-    borderGlow: "hover:border-blue-500/20",
+    visual: "Viabilidade",
   },
   {
     title: "TechTalks Brasil",
-    tag: "Plataforma de conteúdo",
+    tag: "Conteúdo técnico",
     description:
-      "Canal de conteúdo técnico sobre engenharia de software, IA e automação. Educação e posicionamento de autoridade.",
-    stack: ["Conteúdo", "YouTube", "Comunidade"],
+      "Canal de educação sobre engenharia de software, IA e automação para posicionamento de autoridade.",
+    stack: ["YouTube", "Comunidade", "Educação"],
     href: "https://www.techtalksbrasil.com.br/",
     icon: Video,
     featured: false,
-    gradient: "from-emerald-500/10 to-teal-500/10",
-    borderGlow: "hover:border-emerald-500/20",
+    visual: "Mídia",
   },
   {
     title: "AIOX Framework",
-    tag: "Código aberto",
+    tag: "Sistema de agentes",
     description:
-      "Framework proprietário de orquestração de agentes IA. Sistema multi-agente para desenvolvimento full-stack assistido.",
-    stack: ["TypeScript", "Node.js", "Agentes de IA", "CLI"],
+      "Orquestração multi-agente para desenvolvimento full-stack assistido por IA e workflows governados.",
+    stack: ["TypeScript", "CLI", "Agentes IA"],
     href: "https://github.com/SynkraAI/aiox-core",
-    icon: Sparkles,
+    icon: Layers3,
     featured: false,
-    gradient: "from-amber-500/10 to-orange-500/10",
-    borderGlow: "hover:border-amber-500/20",
+    visual: "AIOX",
   },
 ];
 
-function Sparkles(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      {...props}
-    >
-      <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
-    </svg>
-  );
-}
-
 export function Projects() {
   return (
-    <section id="projetos" className="relative py-24 sm:py-32">
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Section header */}
+    <section id="projetos" className="light-panel py-20 sm:py-28">
+      <div className="apple-container">
         <AnimateOnScroll>
-          <div className="text-center mb-16">
-            <span className="text-xs font-mono text-primary tracking-widest uppercase">
-              Projetos
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-gradient">
-              Em Produção
+          <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
+            <p className="apple-eyebrow">Projetos</p>
+            <h2 className="apple-display mt-3 text-4xl font-semibold sm:text-5xl lg:text-6xl">
+              Produtos reais, não promessas.
             </h2>
-            <p className="text-zinc-500 mt-3 max-w-md mx-auto">
-              Produtos e projetos que demonstram capacidade técnica real, da
-              concepção à publicação.
+            <p className="mx-auto mt-5 max-w-2xl text-[19px] leading-8 text-[#6e6e73]">
+              Um portfólio enxuto para demonstrar execução: produto SaaS,
+              conteúdo técnico e framework próprio de agentes.
             </p>
           </div>
         </AnimateOnScroll>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {projects.map((project, i) => {
+        <div className="grid gap-5 md:grid-cols-2">
+          {projects.map((project, index) => {
             const Icon = project.icon;
-            const isExternal = project.href.startsWith("http");
+
             return (
-              <AnimateOnScroll key={project.title} delay={i * 0.1} className={project.featured ? "md:col-span-2" : ""}>
-              <a
-                href={project.href}
-                target={isExternal ? "_blank" : undefined}
-                rel={isExternal ? "noopener noreferrer" : undefined}
-                className={`group relative rounded-2xl bg-gradient-to-br ${project.gradient} border border-white/[0.06] ${project.borderGlow} p-6 sm:p-8 transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 block h-full`}
+              <AnimateOnScroll
+                key={project.title}
+                delay={index * 0.08}
+                className={project.featured ? "md:col-span-2" : ""}
               >
-                {/* Inner card */}
-                <div className="relative z-10">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-white/[0.05] border border-white/[0.06] flex items-center justify-center">
-                        <Icon className="w-5 h-5 text-zinc-400 group-hover:text-primary transition-colors" />
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`apple-card group grid h-full overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(0,0,0,0.1)] ${
+                    project.featured ? "lg:grid-cols-[0.9fr_1.1fr]" : ""
+                  }`}
+                >
+                  <div className="flex min-h-[280px] flex-col justify-between p-7 sm:p-9">
+                    <div>
+                      <div className="mb-7 flex items-center justify-between">
+                        <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#f5f5f7] text-[#1d1d1f]">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <ExternalLink className="h-4 w-4 text-[#86868b]" />
                       </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-zinc-100 group-hover:text-white transition-colors">
-                          {project.title}
-                        </h3>
-                        <span className="text-[11px] font-mono text-zinc-600 uppercase tracking-wider">
-                          {project.tag}
+                      <p className="apple-eyebrow">{project.tag}</p>
+                      <h3 className="mt-2 text-3xl font-semibold tracking-tight sm:text-4xl">
+                        {project.title}
+                      </h3>
+                      <p className="mt-4 max-w-xl text-[17px] leading-7 text-[#6e6e73]">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-2">
+                      {project.stack.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-full border border-[#d2d2d7] px-3 py-1.5 text-xs font-semibold text-[#424245]"
+                        >
+                          {tech}
                         </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="relative min-h-[280px] overflow-hidden bg-[#000000]">
+                    <div className="absolute inset-8 rounded-[34px] bg-[#f5f5f7] shadow-2xl" />
+                    <div className="absolute inset-x-14 top-16 rounded-[26px] bg-white p-5">
+                      <div className="h-3 w-20 rounded-full bg-[#d2d2d7]" />
+                      <div className="mt-6 grid grid-cols-3 gap-2">
+                        <div className="h-20 rounded-2xl bg-[#1d1d1f]" />
+                        <div className="h-20 rounded-2xl bg-[#0071e3]" />
+                        <div className="h-20 rounded-2xl bg-[#e8e8ed]" />
                       </div>
                     </div>
-                    <ExternalLink className="w-4 h-4 text-zinc-600 group-hover:text-zinc-400 transition-colors" />
+                    <div className="absolute bottom-14 left-1/2 -translate-x-1/2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-[#1d1d1f] shadow-xl">
+                      {project.visual}
+                    </div>
                   </div>
-
-                  <p className="text-sm text-zinc-400 leading-relaxed mb-5">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2.5 py-1 text-[11px] font-mono rounded-md bg-white/[0.04] border border-white/[0.06] text-zinc-500"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </a>
+                </a>
               </AnimateOnScroll>
             );
           })}

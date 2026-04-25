@@ -17,60 +17,55 @@ function LinkedinIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export function Footer() {
-  const phoneNumber = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5500000000000").replace(/\D/g, "");
+  const phoneNumber = (
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5500000000000"
+  ).replace(/\D/g, "");
   const whatsappMessage = encodeURIComponent(
     "Olá, Antonio! Vi seu site e gostaria de saber mais sobre seus serviços."
   );
 
   return (
-    <footer className="relative border-t border-white/[0.04] py-12">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          {/* Left */}
-          <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-              <span className="text-xs font-bold text-primary">AJ</span>
-            </div>
-            <span className="text-sm text-zinc-500">
-              &copy; {new Date().getFullYear()} Antonio Jebrael
-            </span>
-          </div>
-
-          {/* Center */}
-          <p className="text-xs text-zinc-700 font-mono">
-            Feito com Next.js + Supabase + n8n
+    <footer className="white-panel border-t border-[#d2d2d7] py-10">
+      <div className="apple-container flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="text-sm font-semibold">Antonio Jebrael</p>
+          <p className="mt-1 text-xs text-[#6e6e73]">
+            &copy; {new Date().getFullYear()} Engenharia de software e IA.
           </p>
+        </div>
 
-          {/* Social links */}
-          <div className="flex items-center gap-3">
-            <a
-              href="https://github.com/AntonioJebrael"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-lg border border-white/[0.06] flex items-center justify-center text-zinc-600 hover:text-white hover:border-white/[0.12] transition-all"
-              aria-label="GitHub"
-            >
-              <GithubIcon className="w-4 h-4" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/antonio-jebrael/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-lg border border-white/[0.06] flex items-center justify-center text-zinc-600 hover:text-white hover:border-white/[0.12] transition-all"
-              aria-label="LinkedIn"
-            >
-              <LinkedinIcon className="w-4 h-4" />
-            </a>
-            <a
-              href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 rounded-lg border border-white/[0.06] flex items-center justify-center text-zinc-600 hover:text-[#25d366] hover:border-[#25d366]/20 transition-all"
-              aria-label="WhatsApp"
-            >
-              <MessageCircle className="w-4 h-4" />
-            </a>
-          </div>
+        <p className="text-xs text-[#6e6e73]">
+          Feito com Next.js, Supabase e Telegram.
+        </p>
+
+        <div className="flex items-center gap-2">
+          <a
+            href="https://github.com/AntonioJebrael"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d2d2d7] text-[#424245] transition hover:border-[#86868b]"
+            aria-label="GitHub"
+          >
+            <GithubIcon className="h-4 w-4" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/antonio-jebrael/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d2d2d7] text-[#424245] transition hover:border-[#86868b]"
+            aria-label="LinkedIn"
+          >
+            <LinkedinIcon className="h-4 w-4" />
+          </a>
+          <a
+            href={`https://wa.me/${phoneNumber}?text=${whatsappMessage}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d2d2d7] text-[#424245] transition hover:border-[#86868b]"
+            aria-label="WhatsApp"
+          >
+            <MessageCircle className="h-4 w-4" />
+          </a>
         </div>
       </div>
     </footer>

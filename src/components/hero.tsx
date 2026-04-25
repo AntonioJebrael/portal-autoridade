@@ -1,112 +1,86 @@
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+
+const highlights = [
+  "Arquitetura full-stack",
+  "Agentes de IA",
+  "Automação comercial",
+];
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 sm:pt-28 lg:pt-32">
-      {/* Background layers */}
-      <div className="absolute inset-0 dot-grid" />
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] animate-pulse-glow" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-accent/5 blur-[100px] animate-pulse-glow delay-500" />
+    <section className="dark-panel relative min-h-[92vh] overflow-hidden pt-24 sm:pt-28">
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#f5f5f7] to-transparent" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Badge */}
-        <div className="animate-fade-in-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/[0.06] bg-white/[0.03] mb-8">
-          <Sparkles className="w-3.5 h-3.5 text-primary" />
-          <span className="text-xs font-medium tracking-wide text-zinc-400 uppercase">
+      <div className="apple-container relative z-10 grid min-h-[calc(92vh-7rem)] items-center gap-12 pb-24 lg:grid-cols-[1.05fr_0.95fr]">
+        <div className="max-w-3xl">
+          <p className="apple-eyebrow animate-fade-in-up text-[#86868b]">
             Arquiteto de IA e Engenharia de Software
-          </span>
-        </div>
+          </p>
+          <h1 className="apple-display mt-5 animate-fade-in-up delay-100 text-5xl font-semibold text-white sm:text-6xl lg:text-[76px]">
+            Sistemas inteligentes. Simples de usar. Prontos para produção.
+          </h1>
+          <p className="mt-6 max-w-2xl animate-fade-in-up delay-200 text-[19px] leading-8 text-[#a1a1a6] sm:text-[21px]">
+            Eu projeto e construo automações, agentes de IA e produtos digitais
+            que transformam processos manuais em operações mensuráveis.
+          </p>
 
-        {/* Headline */}
-        <h1 className="animate-fade-in-up delay-100 text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-          <span className="text-gradient">Construindo o futuro</span>
-          <br />
-          <span className="text-gradient">com </span>
-          <span className="text-gradient-accent">IA</span>
-          <span className="text-gradient"> e </span>
-          <span className="text-gradient-accent">Engenharia</span>
-        </h1>
+          <div className="mt-9 flex animate-fade-in-up delay-300 flex-col gap-3 sm:flex-row">
+            <a
+              href="#contato"
+              className="apple-pill inline-flex items-center justify-center gap-2 bg-[#0071e3] px-7 text-[17px] font-semibold text-white transition hover:bg-[#0066cc]"
+            >
+              Começar projeto
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <a
+              href="#projetos"
+              className="apple-pill inline-flex items-center justify-center border border-white/18 px-7 text-[17px] font-semibold text-white transition hover:bg-white/10"
+            >
+              Ver trabalhos
+            </a>
+          </div>
 
-        {/* Subtitle */}
-        <p className="animate-fade-in-up delay-200 text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-          Transformo negócios com automações inteligentes, agentes de IA e
-          arquitetura de software de alto nível.{" "}
-          <span className="text-zinc-300">Do conceito à produção.</span>
-        </p>
-
-        {/* CTAs */}
-        <div className="animate-fade-in-up delay-300 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a
-            href="#contato"
-            className="group flex items-center gap-2 px-7 py-3.5 rounded-xl bg-primary text-white font-medium text-sm transition-all hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)]"
-          >
-            Agende uma consultoria
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
-          <a
-            href="#projetos"
-            className="flex items-center gap-2 px-7 py-3.5 rounded-xl border border-white/[0.08] text-zinc-300 font-medium text-sm transition-all hover:border-white/[0.15] hover:bg-white/[0.03] hover:text-white"
-          >
-            Conheça o ViaPro
-          </a>
-        </div>
-
-        {/* Floating code window */}
-        <div className="animate-fade-in-up delay-500 mt-16 sm:mt-20 max-w-lg mx-auto hidden sm:block">
-          <div className="rounded-xl border border-white/[0.06] bg-[#0d0d0f] overflow-hidden shadow-2xl">
-            {/* Title bar */}
-            <div className="flex items-center gap-2 px-4 py-2.5 border-b border-white/[0.06]">
-              <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-                <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-                <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
+          <div className="mt-9 grid animate-fade-in-up delay-500 gap-3 text-sm text-[#d2d2d7] sm:grid-cols-3">
+            {highlights.map((item) => (
+              <div key={item} className="flex items-center gap-2">
+                <CheckCircle2 className="h-4 w-4 text-[#2997ff]" />
+                <span>{item}</span>
               </div>
-              <span className="text-[11px] text-zinc-600 font-mono ml-2">
-                arquiteto.ts
-              </span>
-            </div>
-            {/* Code content */}
-            <pre className="px-4 py-4 text-[13px] leading-6 font-mono text-left overflow-x-auto">
-              <code>
-                <span className="text-zinc-500">{"// "}</span>
-                <span className="text-zinc-600">Antonio Jebrael</span>
-                {"\n"}
-                <span className="text-blue-400">const</span>{" "}
-                <span className="text-cyan-300">arquiteto</span>{" "}
-                <span className="text-zinc-500">=</span>{" "}
-                <span className="text-zinc-500">{"{"}</span>
-                {"\n"}
-                <span className="text-zinc-400">{"  pilha"}</span>
-                <span className="text-zinc-500">:</span>{" "}
-                <span className="text-amber-300">
-                  {'"Next.js + Supabase + n8n"'}
-                </span>
-                <span className="text-zinc-500">,</span>
-                {"\n"}
-                <span className="text-zinc-400">{"  foco"}</span>
-                <span className="text-zinc-500">:</span>{" "}
-                <span className="text-amber-300">
-                  {'"Automação com IA"'}
-                </span>
-                <span className="text-zinc-500">,</span>
-                {"\n"}
-                <span className="text-zinc-400">{"  status"}</span>
-                <span className="text-zinc-500">:</span>{" "}
-                <span className="text-emerald-400">
-                  {'"Construindo o futuro"'}
-                </span>
-                {"\n"}
-                <span className="text-zinc-500">{"}"}</span>
-              </code>
-            </pre>
+            ))}
           </div>
         </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in delay-700">
-        <div className="w-5 h-8 rounded-full border border-white/[0.1] flex justify-center pt-1.5">
-          <div className="w-1 h-2 rounded-full bg-zinc-500 animate-bounce" />
+        <div className="relative mx-auto w-full max-w-[520px]">
+          <div className="product-sheen relative aspect-[0.82] overflow-hidden rounded-[44px] border border-white/10 shadow-[0_38px_110px_rgba(0,0,0,0.5)]">
+            <div className="absolute inset-x-8 top-7 h-7 rounded-full bg-white/8" />
+            <div className="absolute left-7 right-7 top-20 rounded-[28px] bg-[#f5f5f7] p-5 text-[#1d1d1f] shadow-2xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#6e6e73]">
+                Lead System
+              </p>
+              <div className="mt-5 space-y-3">
+                {["Captura", "Supabase", "Telegram"].map((label, index) => (
+                  <div
+                    key={label}
+                    className="flex items-center justify-between rounded-2xl bg-white px-4 py-3"
+                  >
+                    <span className="text-sm font-semibold">{label}</span>
+                    <span className="rounded-full bg-[#e8f2ff] px-3 py-1 text-xs font-semibold text-[#0066cc]">
+                      {index === 0 ? "form" : index === 1 ? "db" : "alert"}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="absolute bottom-8 left-7 right-7 rounded-[32px] bg-[#1d1d1f] p-5">
+              <p className="text-sm font-semibold text-white">
+                Automação sem atrito
+              </p>
+              <p className="mt-2 text-sm leading-6 text-[#a1a1a6]">
+                Dados persistidos primeiro. Notificações depois. Operação não
+                depende de ferramenta externa.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

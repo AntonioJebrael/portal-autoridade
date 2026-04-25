@@ -1,152 +1,86 @@
 "use client";
 
-import { Workflow, BotMessageSquare, Code2, ArrowRight } from "lucide-react";
+import { ArrowRight, BotMessageSquare, Code2, Workflow } from "lucide-react";
 import { AnimateOnScroll } from "./animate-on-scroll";
 
 const services = [
   {
     icon: Workflow,
-    title: "Automações n8n",
-    subtitle: "Para negócios locais",
+    title: "Automação operacional",
     description:
-      "Workflows inteligentes que conectam seus sistemas e eliminam trabalho manual. Qualificação de leads, acompanhamentos automáticos e integrações com WhatsApp.",
-    features: [
-      "Workflows customizados",
-      "Integração WhatsApp",
-      "Qualificação automática de leads",
-    ],
-    cta: "Automatize seu negócio",
-    ctaHref: "#contato",
-    accent: "blue",
+      "Integrações, captura de leads, alertas e rotinas que removem tarefas manuais do dia a dia.",
+    features: ["Processos conectados", "Alertas automáticos", "Métricas de execução"],
   },
   {
     icon: BotMessageSquare,
-    title: "Agentes SDR",
-    subtitle: "Prospecção inteligente",
+    title: "Agentes de IA",
     description:
-      "Agentes de IA que prospectam, qualificam e agendam reuniões automaticamente. Um SDR digital que trabalha 24/7 para você.",
-    features: [
-      "Prospecção automatizada",
-      "Qualificação com IA",
-      "Agendamento inteligente",
-    ],
-    cta: "Conheça os agentes",
-    ctaHref: "#contato",
-    accent: "cyan",
+      "Assistentes comerciais e operacionais que qualificam, respondem e encaminham demandas com contexto.",
+    features: ["SDR digital", "Triagem inteligente", "Atendimento 24/7"],
   },
   {
     icon: Code2,
-    title: "Engenharia de Software",
-    subtitle: "Consultoria técnica",
+    title: "MVP e arquitetura",
     description:
-      "Arquitetura de sistemas, revisão de código, mentoria técnica e desenvolvimento assistido por IA. Do MVP à escala com as melhores práticas.",
-    features: [
-      "Arquitetura de sistemas",
-      "Code review & mentoria",
-      "MVP à escala",
-    ],
-    cta: "Agende consultoria",
-    ctaHref: "#contato",
-    accent: "emerald",
+      "Produtos web com base técnica sólida: Next.js, Supabase, APIs, deploy e observabilidade.",
+    features: ["Arquitetura limpa", "Entrega incremental", "Pronto para escalar"],
   },
 ];
 
-const accentColors: Record<string, { border: string; bg: string; text: string; glow: string }> = {
-  blue: {
-    border: "group-hover:border-blue-500/20",
-    bg: "bg-blue-500/10",
-    text: "text-blue-400",
-    glow: "group-hover:shadow-[0_0_40px_rgba(59,130,246,0.08)]",
-  },
-  cyan: {
-    border: "group-hover:border-cyan-500/20",
-    bg: "bg-cyan-500/10",
-    text: "text-cyan-400",
-    glow: "group-hover:shadow-[0_0_40px_rgba(6,182,212,0.08)]",
-  },
-  emerald: {
-    border: "group-hover:border-emerald-500/20",
-    bg: "bg-emerald-500/10",
-    text: "text-emerald-400",
-    glow: "group-hover:shadow-[0_0_40px_rgba(16,185,129,0.08)]",
-  },
-};
-
 export function Services() {
   return (
-    <section id="servicos" className="relative py-24 sm:py-32">
-      {/* Subtle divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
-
-      <div className="max-w-6xl mx-auto px-6">
-        {/* Section header */}
+    <section id="servicos" className="white-panel py-20 sm:py-28">
+      <div className="apple-container">
         <AnimateOnScroll>
-          <div className="text-center mb-16">
-            <span className="text-xs font-mono text-accent tracking-widest uppercase">
-              Serviços
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-gradient">
-              Como posso ajudar
-            </h2>
-            <p className="text-zinc-500 mt-3 max-w-lg mx-auto">
-              Soluções de curto e médio prazo com foco em resultado mensurável e
-              tecnologia de ponta.
+          <div className="mb-12 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+            <div>
+              <p className="apple-eyebrow">Serviços</p>
+              <h2 className="apple-display mt-3 text-4xl font-semibold sm:text-5xl">
+                Da ideia ao sistema operando.
+              </h2>
+            </div>
+            <p className="max-w-2xl text-[19px] leading-8 text-[#6e6e73] lg:justify-self-end">
+              Consultoria e implementação com foco em uma coisa: transformar
+              oportunidade de negócio em produto funcional, medido e mantível.
             </p>
           </div>
         </AnimateOnScroll>
 
-        {/* Service cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          {services.map((service, i) => {
+        <div className="grid gap-5 lg:grid-cols-3">
+          {services.map((service, index) => {
             const Icon = service.icon;
-            const colors = accentColors[service.accent];
-            return (
-              <AnimateOnScroll key={service.title} delay={i * 0.1}>
-              <div
-                className={`group relative rounded-2xl border border-white/[0.06] ${colors.border} ${colors.glow} bg-[#0a0a0c] p-6 sm:p-8 transition-all duration-300 flex flex-col h-full`}
-              >
-                {/* Icon */}
-                <div
-                  className={`w-11 h-11 rounded-xl ${colors.bg} flex items-center justify-center mb-5`}
-                >
-                  <Icon className={`w-5 h-5 ${colors.text}`} />
-                </div>
 
-                {/* Content */}
-                <div className="flex-1">
-                  <p className="text-[11px] font-mono text-zinc-600 uppercase tracking-wider mb-1">
-                    {service.subtitle}
-                  </p>
-                  <h3 className="text-xl font-semibold text-zinc-100 mb-3">
+            return (
+              <AnimateOnScroll key={service.title} delay={index * 0.08}>
+                <article className="h-full rounded-[28px] bg-[#f5f5f7] p-7 transition duration-300 hover:-translate-y-1 sm:p-8">
+                  <div className="mb-8 flex h-12 w-12 items-center justify-center rounded-full bg-white text-[#0071e3] shadow-sm">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="text-2xl font-semibold tracking-tight">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-zinc-500 leading-relaxed mb-5">
+                  <p className="mt-4 text-[17px] leading-7 text-[#6e6e73]">
                     {service.description}
                   </p>
-
-                  {/* Features */}
-                  <ul className="space-y-2 mb-6">
+                  <ul className="mt-7 space-y-3">
                     {service.features.map((feature) => (
                       <li
                         key={feature}
-                        className="flex items-center gap-2 text-sm text-zinc-400"
+                        className="flex items-center justify-between border-t border-[#d2d2d7] pt-3 text-sm font-medium text-[#424245]"
                       >
-                        <div className={`w-1 h-1 rounded-full ${colors.text} opacity-60`} />
                         {feature}
+                        <span className="h-1.5 w-1.5 rounded-full bg-[#0071e3]" />
                       </li>
                     ))}
                   </ul>
-                </div>
-
-                {/* CTA */}
-                <a
-                  href={service.ctaHref}
-                  className={`inline-flex items-center gap-2 text-sm font-medium ${colors.text} transition-all group-hover:gap-3`}
-                >
-                  {service.cta}
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </a>
-              </div>
+                  <a
+                    href="#contato"
+                    className="apple-link mt-8 inline-flex items-center gap-1 text-[17px]"
+                  >
+                    Conversar sobre isso
+                    <ArrowRight className="h-4 w-4" />
+                  </a>
+                </article>
               </AnimateOnScroll>
             );
           })}

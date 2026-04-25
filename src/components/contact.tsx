@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, Loader2, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Loader2, Send } from "lucide-react";
 import { AnimateOnScroll } from "./animate-on-scroll";
 
 const serviceOptions = [
@@ -59,9 +59,7 @@ export function Contact() {
 
         try {
           const data = (await response.json()) as { error?: string };
-          if (data.error) {
-            errorMessage = data.error;
-          }
+          if (data.error) errorMessage = data.error;
         } catch {
           // Keep default message when the error payload is unavailable.
         }
@@ -90,8 +88,8 @@ export function Contact() {
     if (isSubmitting) {
       return (
         <>
-          Enviando...
-          <Loader2 className="w-4 h-4 animate-spin" />
+          Enviando
+          <Loader2 className="h-4 w-4 animate-spin" />
         </>
       );
     }
@@ -99,8 +97,8 @@ export function Contact() {
     if (isSuccess) {
       return (
         <>
-          Mensagem enviada!
-          <CheckCircle2 className="w-4 h-4" />
+          Mensagem enviada
+          <CheckCircle2 className="h-4 w-4" />
         </>
       );
     }
@@ -109,7 +107,7 @@ export function Contact() {
       return (
         <>
           Tentar novamente
-          <Send className="w-4 h-4" />
+          <Send className="h-4 w-4" />
         </>
       );
     }
@@ -117,143 +115,141 @@ export function Contact() {
     return (
       <>
         Enviar mensagem
-        <Send className="w-4 h-4" />
+        <Send className="h-4 w-4" />
       </>
     );
   }
 
+  const fieldClass =
+    "w-full rounded-[18px] border border-[#86868b] bg-white px-4 py-3.5 text-[17px] text-[#1d1d1f] transition placeholder:text-[#86868b] focus:border-[#0071e3] focus:outline-none focus:ring-4 focus:ring-[#0071e3]/10";
+
   return (
-    <section id="contato" className="relative py-24 sm:py-32 pb-32">
-      {/* Subtle divider */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[200px] h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
-
-      {/* Background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[500px] h-[300px] rounded-full bg-primary/5 blur-[120px]" />
-
-      <div className="relative max-w-2xl mx-auto px-6">
-        {/* Section header */}
+    <section id="contato" className="dark-panel py-20 sm:py-28">
+      <div className="apple-container grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
         <AnimateOnScroll>
-          <div className="text-center mb-12">
-            <span className="text-xs font-mono text-accent tracking-widest uppercase">
-              Contato
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mt-3 text-gradient">
-              Vamos conversar
+          <div className="lg:sticky lg:top-24">
+            <p className="apple-eyebrow text-[#86868b]">Contato</p>
+            <h2 className="apple-display mt-3 text-4xl font-semibold text-white sm:text-5xl lg:text-6xl">
+              Vamos tirar sua operação do manual.
             </h2>
-            <p className="text-zinc-500 mt-3">
-              Me conte sobre o seu projeto. Respondo em até 24 horas.
+            <p className="mt-5 max-w-xl text-[19px] leading-8 text-[#a1a1a6]">
+              Envie o contexto do projeto. Eu recebo o lead direto no banco e
+              sou avisado no Telegram.
             </p>
+            <div className="mt-8 rounded-[28px] bg-[#1d1d1f] p-6 text-[#d2d2d7]">
+              <p className="text-sm font-semibold text-white">
+                Resposta em até 24 horas.
+              </p>
+              <p className="mt-2 text-sm leading-6">
+                Melhor se você enviar objetivo, prazo e sistema atual. Mensagem
+                curta funciona.
+              </p>
+            </div>
           </div>
         </AnimateOnScroll>
 
-        {/* Form */}
-        <AnimateOnScroll delay={0.15}>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label
-                htmlFor="name"
-                className="block text-xs font-mono text-zinc-600 uppercase tracking-wider mb-2"
-              >
-                Nome
-              </label>
-              <input
-                id="name"
-                type="text"
-                required
-                value={formData.name}
-                onChange={(e) =>
-                  updateField("name", e.target.value)
-                }
-                className="w-full px-4 py-3 rounded-xl bg-[#0a0a0c] border border-white/[0.06] text-sm text-zinc-200 placeholder:text-zinc-700 focus:outline-none focus:border-primary/30 focus:ring-1 focus:ring-primary/20 transition-all"
-                placeholder="Seu nome"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-xs font-mono text-zinc-600 uppercase tracking-wider mb-2"
-              >
-                E-mail
-              </label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={formData.email}
-                onChange={(e) =>
-                  updateField("email", e.target.value)
-                }
-                className="w-full px-4 py-3 rounded-xl bg-[#0a0a0c] border border-white/[0.06] text-sm text-zinc-200 placeholder:text-zinc-700 focus:outline-none focus:border-primary/30 focus:ring-1 focus:ring-primary/20 transition-all"
-                placeholder="seu@email.com"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label
-              htmlFor="serviceInterest"
-              className="block text-xs font-mono text-zinc-600 uppercase tracking-wider mb-2"
-            >
-              Interesse
-            </label>
-            <select
-              id="serviceInterest"
-              required
-              value={formData.serviceInterest}
-              onChange={(e) =>
-                updateField("serviceInterest", e.target.value)
-              }
-              className="w-full px-4 py-3 rounded-xl bg-[#0a0a0c] border border-white/[0.06] text-sm text-zinc-200 focus:outline-none focus:border-primary/30 focus:ring-1 focus:ring-primary/20 transition-all appearance-none"
-            >
-              <option value="" className="text-zinc-700">
-                Selecione um serviço
-              </option>
-              {serviceOptions.map((opt) => (
-                <option key={opt} value={opt} className="bg-[#0a0a0c]">
-                  {opt}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label
-              htmlFor="message"
-              className="block text-xs font-mono text-zinc-600 uppercase tracking-wider mb-2"
-            >
-              Mensagem{" "}
-              <span className="text-zinc-700 normal-case">(opcional)</span>
-            </label>
-            <textarea
-              id="message"
-              rows={4}
-              value={formData.message}
-              onChange={(e) =>
-                updateField("message", e.target.value)
-              }
-              className="w-full px-4 py-3 rounded-xl bg-[#0a0a0c] border border-white/[0.06] text-sm text-zinc-200 placeholder:text-zinc-700 focus:outline-none focus:border-primary/30 focus:ring-1 focus:ring-primary/20 transition-all resize-none"
-              placeholder="Conte um pouco sobre o seu projeto..."
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-white font-medium text-sm transition-all hover:bg-primary/90 hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] disabled:opacity-50 disabled:cursor-not-allowed"
+        <AnimateOnScroll delay={0.12}>
+          <form
+            onSubmit={handleSubmit}
+            className="rounded-[32px] bg-[#f5f5f7] p-5 text-[#1d1d1f] shadow-[0_30px_100px_rgba(0,0,0,0.35)] sm:p-8"
           >
-            {renderButtonLabel()}
-          </button>
-          {feedback ? (
-            <p
-              className={`text-sm ${
-                isError ? "text-red-400" : "text-emerald-400"
-              }`}
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="mb-2 block text-xs font-semibold uppercase tracking-[0.08em] text-[#6e6e73]"
+                >
+                  Nome
+                </label>
+                <input
+                  id="name"
+                  type="text"
+                  required
+                  value={formData.name}
+                  onChange={(e) => updateField("name", e.target.value)}
+                  className={fieldClass}
+                  placeholder="Seu nome"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="mb-2 block text-xs font-semibold uppercase tracking-[0.08em] text-[#6e6e73]"
+                >
+                  E-mail
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => updateField("email", e.target.value)}
+                  className={fieldClass}
+                  placeholder="seu@email.com"
+                />
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <label
+                htmlFor="serviceInterest"
+                className="mb-2 block text-xs font-semibold uppercase tracking-[0.08em] text-[#6e6e73]"
+              >
+                Interesse
+              </label>
+              <select
+                id="serviceInterest"
+                required
+                value={formData.serviceInterest}
+                onChange={(e) =>
+                  updateField("serviceInterest", e.target.value)
+                }
+                className={`${fieldClass} appearance-none`}
+              >
+                <option value="">Selecione um serviço</option>
+                {serviceOptions.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="mt-4">
+              <label
+                htmlFor="message"
+                className="mb-2 block text-xs font-semibold uppercase tracking-[0.08em] text-[#6e6e73]"
+              >
+                Mensagem <span className="normal-case">(opcional)</span>
+              </label>
+              <textarea
+                id="message"
+                rows={5}
+                value={formData.message}
+                onChange={(e) => updateField("message", e.target.value)}
+                className={`${fieldClass} resize-none`}
+                placeholder="Conte o que você quer construir ou automatizar."
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="apple-pill mt-5 flex w-full items-center justify-center gap-2 bg-[#0071e3] px-7 text-[17px] font-semibold text-white transition hover:bg-[#0066cc] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {feedback}
-            </p>
-          ) : null}
-        </form>
+              {renderButtonLabel()}
+            </button>
+
+            {feedback ? (
+              <p
+                className={`mt-4 text-[15px] font-medium ${
+                  isError ? "text-[#d70015]" : "text-[#147a3d]"
+                }`}
+              >
+                {feedback}
+              </p>
+            ) : null}
+          </form>
         </AnimateOnScroll>
       </div>
     </section>
