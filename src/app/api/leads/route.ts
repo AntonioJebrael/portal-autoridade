@@ -147,38 +147,54 @@ async function persistLead(lead: LeadPayload) {
   return null;
 }
 
-async function notifyLeadAutomation(lead: LeadPayload) {
-  const webhookUrl =
-    getEnvValue("N8N_WEBHOOK_URL") ||
-    getEnvValue("NEXT_PUBLIC_N8N_WEBHOOK_URL");
+export function buildTelegramLeadMessage(lead: LeadPayload) {
+  const message = lead.message ? `\nMensagem: ${lead.message}` : "";
 
-  if (!webhookUrl) {
+  return [
+    "Novo lead no portal",
+    `Nome: ${lead.name}`,
+    `Email: ${lead.email}`,
+    `Interesse: ${lead.service_interest}`,
+    `Origem: ${lead.source}`,
+    `Data: ${lead.timestamp}`,
+    message,
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+async function notifyLeadTelegram(lead: LeadPayload) {
+  const botToken = getEnvValue("TELEGRAM_BOT_TOKEN");
+  const chatId = getEnvValue("TELEGRAM_CHAT_ID");
+
+  if (!botToken || !chatId) {
     return;
   }
 
-  const notificationTarget = (
-    getEnvValue("LEAD_NOTIFICATION_PHONE") || "5521967757938"
-  ).replace(/\D/g, "");
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 1500);
+  const timeout = setTimeout(() => controller.abort(), 3000);
 
   try {
-    const response = await fetch(webhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        ...lead,
-        notification_target: notificationTarget,
-      }),
-      signal: controller.signal,
-    });
+    const response = await fetch(
+      `https://api.telegram.org/bot${botToken}/sendMessage`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text: buildTelegramLeadMessage(lead),
+          disable_web_page_preview: true,
+        }),
+        signal: controller.signal,
+      }
+    );
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error("n8n webhook failed:", errorText);
+      console.error("Telegram notification failed:", errorText);
     }
   } catch (error) {
-    console.error("n8n webhook error:", error);
+    console.error("Telegram notification error:", error);
   } finally {
     clearTimeout(timeout);
   }
@@ -203,7 +219,7 @@ export async function POST(request: Request) {
       return persistError;
     }
 
-    after(() => notifyLeadAutomation(lead));
+    after(() => notifyLeadTelegram(lead));
 
     return NextResponse.json({
       success: true,
