@@ -40,7 +40,7 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="mt-9 grid animate-fade-in-up delay-500 gap-3 text-sm text-[#f5f5f7] sm:grid-cols-3">
+          <div className="mt-9 grid gap-3 text-sm text-[#f5f5f7] sm:grid-cols-3">
             {highlights.map((item) => (
               <div
                 key={item}
