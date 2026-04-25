@@ -6,11 +6,11 @@ import readingTime from "reading-time";
 import type { ComponentType } from "react";
 
 export type BlogFrontmatter = {
-  title: string;
-  description: string;
-  date: string;
-  tags: string[];
-  ogImage: string;
+  titulo: string;
+  descricao: string;
+  data: string;
+  etiquetas: string[];
+  imagem_capa: string;
 };
 
 export type BlogPostSummary = BlogFrontmatter & {
@@ -30,7 +30,7 @@ function formatReadingTime(minutes: number) {
 }
 
 function compareByDateDesc(a: BlogPostSummary, b: BlogPostSummary) {
-  return new Date(b.date).getTime() - new Date(a.date).getTime();
+  return new Date(b.data).getTime() - new Date(a.data).getTime();
 }
 
 function parsePostFile(filename: string): BlogPostSummary {
@@ -42,21 +42,21 @@ function parsePostFile(filename: string): BlogPostSummary {
   const frontmatter = data as Partial<BlogFrontmatter>;
 
   if (
-    !frontmatter.title ||
-    !frontmatter.description ||
-    !frontmatter.date ||
-    !Array.isArray(frontmatter.tags) ||
-    !frontmatter.ogImage
+    !frontmatter.titulo ||
+    !frontmatter.descricao ||
+    !frontmatter.data ||
+    !Array.isArray(frontmatter.etiquetas) ||
+    !frontmatter.imagem_capa
   ) {
     throw new Error(`Invalid frontmatter in blog post: ${filename}`);
   }
 
   return {
-    title: frontmatter.title,
-    description: frontmatter.description,
-    date: frontmatter.date,
-    tags: frontmatter.tags,
-    ogImage: frontmatter.ogImage,
+    titulo: frontmatter.titulo,
+    descricao: frontmatter.descricao,
+    data: frontmatter.data,
+    etiquetas: frontmatter.etiquetas,
+    imagem_capa: frontmatter.imagem_capa,
     slug,
     readingTime: formatReadingTime(readingTime(content).minutes),
   };

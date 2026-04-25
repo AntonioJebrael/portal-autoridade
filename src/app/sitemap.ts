@@ -4,7 +4,7 @@ import { getAllBlogPosts } from "@/lib/blog";
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogEntries = getAllBlogPosts().map((post) => ({
     url: `https://antoniojebrael.dev/blog/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: new Date(post.data),
     changeFrequency: "monthly" as const,
     priority: 0.8,
   }));

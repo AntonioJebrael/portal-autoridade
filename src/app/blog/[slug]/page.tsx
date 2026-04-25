@@ -27,23 +27,23 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.title} | Antonio Jebrael`,
-    description: post.description,
+    title: `${post.titulo} | Antonio Jebrael`,
+    description: post.descricao,
     alternates: {
       canonical: `/blog/${post.slug}`,
     },
     openGraph: {
-      title: post.title,
-      description: post.description,
+      title: post.titulo,
+      description: post.descricao,
       url: `/blog/${post.slug}`,
       type: "article",
-      publishedTime: post.date,
-      images: [post.ogImage],
+      publishedTime: post.data,
+      images: [post.imagem_capa],
     },
     twitter: {
-      title: post.title,
-      description: post.description,
-      images: [post.ogImage],
+      title: post.titulo,
+      description: post.descricao,
+      images: [post.imagem_capa],
     },
   };
 }
@@ -56,9 +56,9 @@ function buildArticleJsonLd(post: Awaited<ReturnType<typeof getBlogPostBySlug>>)
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
+    headline: post.titulo,
+    description: post.descricao,
+    datePublished: post.data,
     author: {
       "@type": "Person",
       name: "Antonio Jebrael",
@@ -67,8 +67,8 @@ function buildArticleJsonLd(post: Awaited<ReturnType<typeof getBlogPostBySlug>>)
       "@type": "Person",
       name: "Antonio Jebrael",
     },
-    image: [`https://antoniojebrael.dev${post.ogImage}`],
-    keywords: post.tags.join(", "),
+    image: [`https://antoniojebrael.dev${post.imagem_capa}`],
+    keywords: post.etiquetas.join(", "),
     mainEntityOfPage: `https://antoniojebrael.dev/blog/${post.slug}`,
   };
 }
@@ -114,11 +114,11 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
             </Link>
 
             <BlogArticleHeader
-              title={post.title}
-              description={post.description}
-              date={post.date}
+              titulo={post.titulo}
+              descricao={post.descricao}
+              data={post.data}
               readingTime={post.readingTime}
-              tags={post.tags}
+              etiquetas={post.etiquetas}
             />
           </div>
         </section>
@@ -143,7 +143,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
 
                   <div className="mt-6 flex flex-col gap-3 sm:flex-row">
                     <a
-                      href={buildWhatsAppHref(post.title)}
+                      href={buildWhatsAppHref(post.titulo)}
                       target="_blank"
                       rel="noreferrer"
                       className="apple-pill inline-flex items-center justify-center gap-2 bg-[#0071e3] px-5 text-sm font-semibold text-white transition hover:bg-[#0066cc]"
@@ -184,9 +184,9 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
                       href={`/blog/${relatedPost.slug}`}
                       className="block rounded-2xl border border-[#d2d2d7] px-4 py-4 transition hover:border-[#0071e3]/35"
                     >
-                      <p className="text-sm font-semibold text-[#1d1d1f]">{relatedPost.title}</p>
+                      <p className="text-sm font-semibold text-[#1d1d1f]">{relatedPost.titulo}</p>
                       <p className="mt-2 text-sm leading-6 text-[#6e6e73]">
-                        {relatedPost.description}
+                        {relatedPost.descricao}
                       </p>
                     </Link>
                   ))}

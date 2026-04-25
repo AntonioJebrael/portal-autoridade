@@ -6,15 +6,15 @@ describe("blog content source", () => {
   it("loads the seed posts from the content directory", () => {
     const posts = getAllBlogPosts();
     const slugs = posts.map((post) => post.slug);
-    const titles = posts.map((post) => post.title);
+    const titulos = posts.map((post) => post.titulo);
 
     expect(posts.length).toBeGreaterThanOrEqual(2);
     expect(slugs).toContain("o-que-e-vibe-coding-e-por-que-voce-deveria-adotar");
     expect(slugs).toContain("como-automatizar-seu-negocio-com-n8n");
-    expect(titles).toContain(
+    expect(titulos).toContain(
       "Como a Inteligência Artificial Transforma o Atendimento de Vendas no WhatsApp",
     );
-    expect(titles).toContain(
+    expect(titulos).toContain(
       "Automatizando Processos Internos: Como Escalar sua Empresa sem Aumentar a Equipe",
     );
   });
