@@ -40,9 +40,12 @@ export function Hero() {
             </a>
           </div>
 
-          <div className="mt-9 grid animate-fade-in-up delay-500 gap-3 text-sm text-[#d2d2d7] sm:grid-cols-3">
+          <div className="mt-9 grid animate-fade-in-up delay-500 gap-3 text-sm text-[#f5f5f7] sm:grid-cols-3">
             {highlights.map((item) => (
-              <div key={item} className="flex items-center gap-2">
+              <div
+                key={item}
+                className="flex items-center gap-2 rounded-full border border-white/12 bg-black/35 px-3 py-2 backdrop-blur"
+              >
                 <CheckCircle2 className="h-4 w-4 text-[#2997ff]" />
                 <span>{item}</span>
               </div>
