@@ -1,9 +1,9 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const highlights = [
-  "Arquitetura full-stack",
-  "Agentes de IA",
-  "Automação comercial",
+  "n8n e integrações",
+  "Agentes WhatsApp",
+  "Entrega expressa",
 ];
 
 export function Hero() {
@@ -17,19 +17,19 @@ export function Hero() {
             Arquiteto de IA e Engenharia de Software
           </p>
           <h1 className="apple-display mt-5 animate-fade-in-up delay-100 text-5xl font-semibold text-white sm:text-6xl lg:text-[76px]">
-            Sistemas inteligentes. Simples de usar. Prontos para produção.
+            Automação e agentes de IA para tirar sua operação do manual.
           </h1>
           <p className="mt-6 max-w-2xl animate-fade-in-up delay-200 text-[19px] leading-8 text-[#a1a1a6] sm:text-[21px]">
-            Eu projeto e construo automações, agentes de IA e produtos digitais
-            que transformam processos manuais em operações mensuráveis.
+            Eu projeto fluxos n8n, integrações e agentes WhatsApp com escopo
+            claro, prazo curto e entrega demonstrável.
           </p>
 
           <div className="mt-9 flex animate-fade-in-up delay-300 flex-col gap-3 sm:flex-row">
             <a
-              href="#contato"
+              href="#pacotes"
               className="apple-pill inline-flex items-center justify-center gap-2 bg-[#0071e3] px-7 text-[17px] font-semibold text-white transition hover:bg-[#0066cc]"
             >
-              Começar projeto
+              Ver pacotes
               <ArrowRight className="h-4 w-4" />
             </a>
             <a
@@ -76,11 +76,11 @@ export function Hero() {
             </div>
             <div className="absolute bottom-8 left-7 right-7 rounded-[32px] bg-[#1d1d1f] p-5">
               <p className="text-sm font-semibold text-white">
-                Automação sem atrito
+                Automação expressa
               </p>
               <p className="mt-2 text-sm leading-6 text-[#a1a1a6]">
-                Dados persistidos primeiro. Notificações depois. Operação não
-                depende de ferramenta externa.
+                Fluxos simples em 48h. Agentes WhatsApp em 5 dias. Integrações
+                sob medida quando o processo pede mais.
               </p>
             </div>
           </div>

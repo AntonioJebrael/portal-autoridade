@@ -4,6 +4,9 @@ import { useState } from "react";
 import { CheckCircle2, Loader2, Send } from "lucide-react";
 
 const serviceOptions = [
+  "Automação Express 48h",
+  "Agente WhatsApp Starter",
+  "Integração n8n Pro",
   "Automações com n8n",
   "Agentes de IA / SDR",
   "Consultoria Técnica",
@@ -131,16 +134,16 @@ export function Contact() {
               Vamos tirar sua operação do manual.
             </h2>
             <p className="mt-5 max-w-xl text-[19px] leading-8 text-[#a1a1a6]">
-              Envie o contexto do projeto. Eu recebo o lead direto no banco e
-              sou avisado no Telegram.
+              Envie o processo que você quer automatizar. Eu respondo com
+              escopo, prazo e próximo passo objetivo.
             </p>
             <div className="mt-8 rounded-[28px] bg-[#1d1d1f] p-6 text-[#d2d2d7]">
               <p className="text-sm font-semibold text-white">
                 Resposta em até 24 horas.
               </p>
               <p className="mt-2 text-sm leading-6">
-                Melhor se você enviar objetivo, prazo e sistema atual. Mensagem
-                curta funciona.
+                Melhor se você enviar objetivo, prazo, sistema atual e onde o
+                trabalho manual mais consome tempo.
               </p>
             </div>
         </div>
