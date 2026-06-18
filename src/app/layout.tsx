@@ -4,7 +4,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://antoniojebrael.dev"),
+  metadataBase: new URL("https://antoniojebrael.pro"),
   title: "Antonio Jebrael — Arquiteto de IA",
   description:
     "Engenharia de software e IA para negócios. Automações inteligentes, agentes de IA e consultoria técnica de alto nível.",

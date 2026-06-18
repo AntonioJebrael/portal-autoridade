@@ -3,7 +3,7 @@ import { getAllBlogPosts } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const blogEntries = getAllBlogPosts().map((post) => ({
-    url: `https://antoniojebrael.dev/blog/${post.slug}`,
+    url: `https://antoniojebrael.pro/blog/${post.slug}`,
     lastModified: new Date(post.data),
     changeFrequency: "monthly" as const,
     priority: 0.8,
@@ -11,13 +11,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: "https://antoniojebrael.dev",
+      url: "https://antoniojebrael.pro",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1.0,
     },
     {
-      url: "https://antoniojebrael.dev/blog",
+      url: "https://antoniojebrael.pro/blog",
       lastModified: blogEntries[0]?.lastModified || new Date(),
       changeFrequency: "weekly",
       priority: 0.9,

@@ -96,7 +96,7 @@ export default function OGImage() {
               textTransform: "uppercase",
             }}
           >
-            antoniojebrael.dev
+            antoniojebrael.pro
           </p>
           <div
             style={{

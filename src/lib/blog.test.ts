@@ -30,12 +30,12 @@ describe("blog content source", () => {
     const entries = sitemap();
     const urls = entries.map((entry) => entry.url);
 
-    expect(urls).toContain("https://antoniojebrael.dev/blog");
+    expect(urls).toContain("https://antoniojebrael.pro/blog");
     expect(urls).toContain(
-      "https://antoniojebrael.dev/blog/o-que-e-vibe-coding-e-por-que-voce-deveria-adotar",
+      "https://antoniojebrael.pro/blog/o-que-e-vibe-coding-e-por-que-voce-deveria-adotar",
     );
     expect(urls).toContain(
-      "https://antoniojebrael.dev/blog/como-automatizar-seu-negocio-com-n8n",
+      "https://antoniojebrael.pro/blog/como-automatizar-seu-negocio-com-n8n",
     );
   });
 });

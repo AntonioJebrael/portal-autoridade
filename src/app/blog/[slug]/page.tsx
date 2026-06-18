@@ -67,9 +67,9 @@ function buildArticleJsonLd(post: Awaited<ReturnType<typeof getBlogPostBySlug>>)
       "@type": "Person",
       name: "Antonio Jebrael",
     },
-    image: [`https://antoniojebrael.dev${post.imagem_capa}`],
+    image: [`https://antoniojebrael.pro${post.imagem_capa}`],
     keywords: post.etiquetas.join(", "),
-    mainEntityOfPage: `https://antoniojebrael.dev/blog/${post.slug}`,
+    mainEntityOfPage: `https://antoniojebrael.pro/blog/${post.slug}`,
   };
 }
 
