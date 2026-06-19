@@ -1,6 +1,6 @@
 "use client";
 
-import { Cpu, ExternalLink, Layers3, Video } from "lucide-react";
+import { Bot, Cpu, ExternalLink, Layers3, Video } from "lucide-react";
 import { AnimateOnScroll } from "./animate-on-scroll";
 
 const projects = [
@@ -14,6 +14,17 @@ const projects = [
     icon: Cpu,
     featured: true,
     visual: "Viabilidade",
+  },
+  {
+    title: "SDR IA",
+    tag: "Automação comercial",
+    description:
+      "Agente de pré-venda para WhatsApp que atende 24/7, qualifica leads por BANT, aquece contatos mornos/frios e integra tudo ao CRM.",
+    stack: ["WhatsApp", "n8n", "Supabase", "Kommo", "RAG"],
+    href: "https://antoniojebrael.pro/#contato",
+    icon: Bot,
+    featured: false,
+    visual: "SDR IA",
   },
   {
     title: "TechTalks Brasil",
@@ -51,7 +62,8 @@ export function Projects() {
             </h2>
             <p className="mx-auto mt-5 max-w-2xl text-[19px] leading-8 text-[#6e6e73]">
               Um portfólio enxuto para demonstrar execução: produto SaaS,
-              conteúdo técnico e framework próprio de agentes.
+              automação comercial com IA, conteúdo técnico e framework próprio
+              de agentes.
             </p>
           </div>
         </AnimateOnScroll>
