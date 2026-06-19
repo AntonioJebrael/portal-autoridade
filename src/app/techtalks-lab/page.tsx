@@ -8,7 +8,6 @@ import {
   CheckCircle2,
   Clock3,
   MessageCircle,
-  MessagesSquare,
   Route,
   ShieldCheck,
   Sparkles,
@@ -20,16 +19,16 @@ import { Navbar } from "@/components/navbar";
 import { WhatsAppButton } from "@/components/whatsapp-button";
 
 export const metadata: Metadata = {
-  title: "TechTalks Lab IA — Automações e agentes para WhatsApp, vendas e atendimento",
+  title: "TechTalks Lab IA — Pare de perder venda por demora no atendimento",
   description:
-    "Landing comercial da TechTalks Lab IA: automações com n8n, agentes de IA, WhatsApp, SDR digital e integrações para PMEs e operações B2B.",
+    "Automações e agentes de IA que respondem na hora, qualificam leads e avisam seu time no WhatsApp. Comece em 48h, veja funcionando e escale quando fizer sentido.",
   alternates: {
     canonical: "/techtalks-lab",
   },
   openGraph: {
-    title: "TechTalks Lab IA — Automações e agentes para negócios",
+    title: "TechTalks Lab IA — Atendimento e vendas no automático",
     description:
-      "Pacotes rápidos de automação, agentes de IA e integrações com n8n para tirar vendas e atendimento do manual.",
+      "IA, WhatsApp e n8n trabalhando no seu atendimento: captura lead, responde dúvida e avisa o time. Sem projeto longo e sem complicação técnica.",
     type: "website",
     locale: "pt_BR",
     url: "https://antoniojebrael.pro/techtalks-lab",
@@ -42,16 +41,16 @@ const packages = [
     title: "Automação Express 48h",
     price: "R$ 497+",
     summary:
-      "Um fluxo simples para eliminar uma tarefa manual recorrente em planilha, email, formulário, Telegram ou API.",
-    items: ["Escopo fechado", "Entrega demonstrável", "Vídeo curto de operação"],
+      "Elimina aquela tarefa manual que rouba seu tempo todo dia — planilha, email, formulário, Telegram ou API — em até 48 horas.",
+    items: ["Escopo fechado, sem surpresa", "Você vê funcionando", "Vídeo curto de como operar"],
   },
   {
     icon: MessageCircle,
     title: "Agente WhatsApp Starter",
     price: "R$ 997",
     summary:
-      "Atendimento inicial com IA para responder dúvidas, capturar leads e avisar o time quando houver oportunidade real.",
-    items: ["FAQ + triagem", "Registro de lead", "Alerta para humano"],
+      "IA que responde na hora, tira a dúvida do cliente, registra o lead e chama você só quando aparece oportunidade de verdade.",
+    items: ["Responde dúvidas 24/7", "Captura e organiza o lead", "Avisa o time na hora certa"],
     featured: true,
   },
   {
@@ -59,8 +58,8 @@ const packages = [
     title: "Integração n8n Pro",
     price: "R$ 2.497+",
     summary:
-      "Automação multi-etapas com classificação, roteamento, CRM, base de conhecimento, dashboard ou integrações de negócio.",
-    items: ["10 dias úteis", "Documentação operacional", "Passagem assistida"],
+      "Para quem precisa conectar tudo: qualificação de lead, roteamento, CRM, base de conhecimento e os sistemas que você já usa.",
+    items: ["Pronto em ~10 dias úteis", "Documentação pra você operar", "Acompanhamento na virada"],
   },
 ];
 
@@ -69,58 +68,68 @@ const clients = [
   "Clínicas, estética e saúde privada",
   "Imobiliárias e corretores",
   "Escolas, cursos e mentorias",
-  "Operações que vendem por WhatsApp",
-  "PMEs com atendimento manual lento",
+  "Quem vende e atende pelo WhatsApp",
+  "PMEs que perdem lead por demora",
 ];
 
 const workflows = [
-  "SDR com handoff humano",
-  "Classificação de lead com IA",
-  "RAG para base de conhecimento",
-  "Agente de atendimento IA",
-  "Transcrição de áudio WhatsApp",
-  "Publicação e rotina de conteúdo",
+  "Atendimento e qualificação por IA",
+  "Lead que cai direto no time certo",
+  "IA que responde pela sua base de conhecimento",
+  "Agente de atendimento no WhatsApp",
+  "Áudio do WhatsApp virando texto",
+  "Conteúdo publicado no automático",
 ];
 
 const steps = [
   {
     title: "Diagnóstico do processo",
-    text: "Mapeio onde o lead, atendimento ou backoffice trava hoje e defino o menor fluxo vendável.",
+    text: "Mapeio onde você perde tempo, lead ou venda hoje e aponto o menor fluxo que já traz resultado.",
   },
   {
-    title: "MVP operando",
-    text: "Construo a automação com n8n, APIs e IA, priorizando entrega rápida e demonstração clara.",
+    title: "Construo e você vê rodando",
+    text: "Monto a automação com IA, WhatsApp e n8n priorizando entrega rápida e prova clara de que funciona.",
   },
   {
-    title: "Handoff e evolução",
-    text: "Documentação curta, orientação operacional e próximos incrementos quando o uso real aparecer.",
+    title: "Entrega e evolução",
+    text: "Documentação curta, orientação pra operar e próximos passos quando o uso real mostrar onde crescer.",
   },
 ];
 
-const channels: Array<{
+const faqs: Array<{
   icon: LucideIcon;
   title: string;
   text: string;
 }> = [
   {
-    icon: MessagesSquare,
-    title: "Workana e 99Freelas",
-    text: "Demanda quente buscando implementação.",
+    icon: Bot,
+    title: "Preciso entender de tecnologia?",
+    text: "Não. Cuido da parte técnica de ponta a ponta e te entrego algo simples de operar, com orientação passo a passo.",
+  },
+  {
+    icon: MessageCircle,
+    title: "Funciona com o WhatsApp que já uso?",
+    text: "Sim. A automação conversa com o seu número e suas ferramentas atuais — sem te obrigar a trocar de sistema.",
   },
   {
     icon: Route,
-    title: "LinkedIn e B2B local",
-    text: "Abordagem consultiva por segmento.",
-  },
-  {
-    icon: Bot,
-    title: "Instagram",
-    text: "Prova visual curta com antes/depois.",
+    title: "E se eu não souber qual automação preciso?",
+    text: "Por isso começamos pelo diagnóstico. Eu mapeio onde você perde tempo ou lead e indico o menor fluxo que já gera resultado.",
   },
   {
     icon: ShieldCheck,
-    title: "Portal próprio",
-    text: "Página de confiança para converter indicação.",
+    title: "Meus dados e dos meus clientes ficam seguros?",
+    text: "Ficam. Trabalho sem expor chaves, senhas ou dados sensíveis, e tudo roda em ambiente controlado.",
+  },
+  {
+    icon: Clock3,
+    title: "Quanto tempo até estar funcionando?",
+    text: "Pacotes a partir de 48h e integrações maiores em cerca de 10 dias úteis. Você vê funcionando antes de escalar.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Vou ficar dependente de você?",
+    text: "Não. Entrego documentação curta e te deixo no controle. Você me chama pra evoluir, não porque ficou preso.",
   },
 ];
 
@@ -145,12 +154,12 @@ export default function TechTalksLabPage() {
                 TechTalks Lab IA
               </p>
               <h1 className="apple-display mt-6 text-5xl font-semibold sm:text-6xl lg:text-7xl">
-                Automações e agentes para vender, atender e responder mais rápido.
+                Pare de perder venda por demora no atendimento.
               </h1>
               <p className="mt-6 max-w-xl text-[19px] leading-8 text-[#d2d2d7]">
-                Uma linha comercial dentro do portal Antonio Jebrael para criar
-                fluxos com n8n, IA, WhatsApp, CRM, Telegram e APIs sem projeto
-                infinito.
+                Coloco IA, WhatsApp e n8n para trabalhar no seu atendimento e
+                backoffice — capturando lead, respondendo dúvida na hora e
+                avisando seu time. Sem projeto longo e sem complicação técnica.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <a
@@ -182,10 +191,10 @@ export default function TechTalksLabPage() {
               />
               <div className="flex flex-col gap-1 px-2 py-4 sm:flex-row sm:items-center sm:justify-between">
                 <p className="text-sm font-semibold text-white">
-                  Prova visual real do workspace n8n
+                  Automações reais rodando no n8n
                 </p>
                 <p className="text-xs text-[#a1a1a6]">
-                  Fluxos próprios, sem expor credenciais.
+                  Fluxos de verdade, sem expor nenhuma credencial.
                 </p>
               </div>
             </div>
@@ -197,7 +206,7 @@ export default function TechTalksLabPage() {
             <div>
               <p className="apple-eyebrow">Para quem é</p>
               <h2 className="apple-display mt-3 text-4xl font-semibold sm:text-5xl">
-                Clientes que já têm demanda, mas ainda operam no braço.
+                Você já tem demanda. Só ainda faz tudo no braço.
               </h2>
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
@@ -219,9 +228,9 @@ export default function TechTalksLabPage() {
         <section id="pacotes" className="light-panel py-16 sm:py-24">
           <div className="apple-container">
             <div className="mb-10 max-w-3xl">
-              <p className="apple-eyebrow">Pacotes comerciais</p>
+              <p className="apple-eyebrow">Pacotes</p>
               <h2 className="apple-display mt-3 text-4xl font-semibold sm:text-5xl">
-                Oferta simples para abrir conversa e fechar rápido.
+                Comece pequeno, veja funcionando e escale quando fizer sentido.
               </h2>
             </div>
             <div className="grid gap-5 lg:grid-cols-3">
@@ -288,12 +297,12 @@ export default function TechTalksLabPage() {
             <div>
               <p className="apple-eyebrow">Prova operacional</p>
               <h2 className="apple-display mt-3 text-4xl font-semibold sm:text-5xl">
-                Fluxos reais, vendáveis e demonstráveis.
+                Automações reais, rodando de verdade — não slide bonito.
               </h2>
               <p className="mt-5 text-[19px] leading-8 text-[#6e6e73]">
-                O material comercial usa automações já organizadas no n8n para
-                mostrar capacidade prática sem expor chaves, dados privados ou
-                detalhes sensíveis do ambiente.
+                Você vê fluxos já montados no n8n funcionando na prática — a
+                prova concreta do que dá para construir no seu negócio, sem
+                expor chaves, dados ou nada sensível.
               </p>
               <div className="mt-7 grid gap-3 sm:grid-cols-2">
                 {workflows.map((workflow) => (
@@ -313,9 +322,9 @@ export default function TechTalksLabPage() {
         <section className="dark-panel py-16 sm:py-24">
           <div className="apple-container">
             <div className="mb-10 max-w-3xl">
-              <p className="apple-eyebrow text-[#86868b]">Método</p>
+              <p className="apple-eyebrow text-[#86868b]">Como funciona</p>
               <h2 className="apple-display mt-3 text-4xl font-semibold text-white sm:text-5xl">
-                Construção curta, com escopo e handoff.
+                Escopo fechado, entrega rápida e você no controle.
               </h2>
             </div>
             <div className="grid gap-5 lg:grid-cols-3">
@@ -338,22 +347,24 @@ export default function TechTalksLabPage() {
         </section>
 
         <section className="white-panel py-16 sm:py-24">
-          <div className="apple-container grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="apple-container grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
-              <p className="apple-eyebrow">Canais de aquisição</p>
+              <p className="apple-eyebrow">Perguntas frequentes</p>
               <h2 className="apple-display mt-3 text-4xl font-semibold sm:text-5xl">
-                A venda começa onde a dor já aparece.
+                As dúvidas que travam antes de começar.
               </h2>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              {channels.map(({ icon: Icon, title, text }) => {
+              {faqs.map(({ icon: Icon, title, text }) => {
                 return (
                   <article
                     key={title}
                     className="rounded-[24px] border border-[#d2d2d7] bg-[#f5f5f7] p-6"
                   >
                     <Icon className="h-5 w-5 text-[#0071e3]" />
-                    <h3 className="mt-4 text-xl font-semibold">{title}</h3>
+                    <h3 className="mt-4 text-lg font-semibold leading-snug">
+                      {title}
+                    </h3>
                     <p className="mt-2 text-sm leading-6 text-[#6e6e73]">
                       {text}
                     </p>
@@ -369,12 +380,12 @@ export default function TechTalksLabPage() {
             <div className="max-w-2xl">
               <p className="apple-eyebrow">Próximo passo</p>
               <h2 className="apple-display mt-3 text-4xl font-semibold">
-                Diagnóstico de automação sem compromisso longo.
+                Diagnóstico gratuito, sem compromisso.
               </h2>
               <p className="mt-4 text-[17px] leading-7 text-[#6e6e73]">
-                Envie o processo manual, canais usados e onde o atendimento
-                perde velocidade. A resposta vem com escopo, prazo e pacote
-                recomendado.
+                Me conte qual processo é manual hoje e onde o atendimento perde
+                velocidade. Você recebe de volta escopo, prazo e o pacote
+                recomendado — sem enrolação.
               </p>
             </div>
             <a
